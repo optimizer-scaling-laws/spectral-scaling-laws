@@ -67,8 +67,6 @@ This generates one tiny train shard and one tiny validation shard in the same he
 ## Token-frequency artifact formats
 
 The preferred public artifact is `results/processed/token_frequencies.npy`, an
-integer vector with one entry per token ID. `token_frequencies.pt` is retained for
-compatibility with earlier training code. Public loaders support `.npy`, `.npz`,
-and `.pt`; `.pt` loading uses `weights_only=True` when supported by PyTorch.
-
-`results/processed/token_frequencies.pt` is also included for compatibility with earlier scripts.
+integer vector with one entry per token ID. Public loaders also support `.npz` and
+`.pt` for local compatibility, but the released repository uses `.npy` to avoid
+pickle-backed artifacts.

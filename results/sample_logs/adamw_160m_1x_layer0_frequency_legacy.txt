@@ -1,0 +1,124 @@
+Step 1:
+  HEAD (n=44571): SE_pre=3.163, SE_post=2.859, PR_pre=15.87, PR_post=10.53, EEE_pre=0.974, EEE_post=0.977, JS=0.0142
+  MID (n=45159): SE_pre=5.705, SE_post=5.807, PR_pre=202.41, PR_post=201.92, EEE_pre=0.707, EEE_post=0.667, JS=0.0048
+  TAIL (n=41342): SE_pre=6.098, SE_post=6.292, PR_pre=357.12, PR_post=410.02, EEE_pre=0.564, EEE_post=0.461, JS=0.0151
+Step 200:
+  HEAD (n=41248): SE_pre=2.029, SE_post=2.573, PR_pre=5.49, PR_post=8.54, EEE_pre=0.993, EEE_post=0.986, JS=0.0271
+  MID (n=43808): SE_pre=1.863, SE_post=2.743, PR_pre=4.70, PR_post=8.87, EEE_pre=0.993, EEE_post=0.983, JS=0.0581
+  TAIL (n=46016): SE_pre=1.694, SE_post=2.244, PR_pre=3.61, PR_post=4.65, EEE_pre=0.993, EEE_post=0.987, JS=0.0280
+Step 400:
+  HEAD (n=41919): SE_pre=2.370, SE_post=3.062, PR_pre=7.68, PR_post=11.41, EEE_pre=0.989, EEE_post=0.975, JS=0.0390
+  MID (n=43397): SE_pre=2.248, SE_post=3.518, PR_pre=6.59, PR_post=16.06, EEE_pre=0.990, EEE_post=0.958, JS=0.0864
+  TAIL (n=45756): SE_pre=2.131, SE_post=2.787, PR_pre=5.94, PR_post=6.62, EEE_pre=0.990, EEE_post=0.975, JS=0.0473
+Step 600:
+  HEAD (n=43731): SE_pre=2.572, SE_post=3.422, PR_pre=8.98, PR_post=16.11, EEE_pre=0.987, EEE_post=0.964, JS=0.0467
+  MID (n=44343): SE_pre=2.533, SE_post=3.987, PR_pre=8.19, PR_post=23.20, EEE_pre=0.986, EEE_post=0.932, JS=0.0984
+  TAIL (n=42998): SE_pre=2.365, SE_post=3.295, PR_pre=7.43, PR_post=10.50, EEE_pre=0.988, EEE_post=0.958, JS=0.0588
+Step 800:
+  HEAD (n=43256): SE_pre=2.730, SE_post=3.578, PR_pre=10.08, PR_post=18.80, EEE_pre=0.984, EEE_post=0.957, JS=0.0435
+  MID (n=46142): SE_pre=2.749, SE_post=4.168, PR_pre=9.63, PR_post=24.07, EEE_pre=0.983, EEE_post=0.916, JS=0.0949
+  TAIL (n=41674): SE_pre=2.508, SE_post=3.594, PR_pre=8.06, PR_post=13.82, EEE_pre=0.986, EEE_post=0.944, JS=0.0626
+Step 1000:
+  HEAD (n=43025): SE_pre=2.858, SE_post=3.646, PR_pre=11.06, PR_post=20.59, EEE_pre=0.982, EEE_post=0.954, JS=0.0364
+  MID (n=44799): SE_pre=2.939, SE_post=4.326, PR_pre=11.01, PR_post=25.17, EEE_pre=0.978, EEE_post=0.901, JS=0.0956
+  TAIL (n=43248): SE_pre=2.666, SE_post=3.780, PR_pre=8.88, PR_post=15.66, EEE_pre=0.983, EEE_post=0.933, JS=0.0610
+Step 1200:
+  HEAD (n=42422): SE_pre=2.969, SE_post=3.666, PR_pre=12.06, PR_post=20.73, EEE_pre=0.980, EEE_post=0.953, JS=0.0287
+  MID (n=44767): SE_pre=3.079, SE_post=4.426, PR_pre=12.21, PR_post=26.83, EEE_pre=0.975, EEE_post=0.890, JS=0.0901
+  TAIL (n=43883): SE_pre=2.776, SE_post=3.871, PR_pre=9.42, PR_post=16.20, EEE_pre=0.981, EEE_post=0.925, JS=0.0576
+Step 1400:
+  HEAD (n=43025): SE_pre=3.043, SE_post=3.680, PR_pre=12.82, PR_post=20.35, EEE_pre=0.978, EEE_post=0.952, JS=0.0238
+  MID (n=44578): SE_pre=3.191, SE_post=4.462, PR_pre=13.41, PR_post=24.44, EEE_pre=0.972, EEE_post=0.882, JS=0.0911
+  TAIL (n=43469): SE_pre=2.857, SE_post=4.047, PR_pre=9.95, PR_post=19.56, EEE_pre=0.979, EEE_post=0.913, JS=0.0617
+Step 1600:
+  HEAD (n=42978): SE_pre=3.112, SE_post=3.695, PR_pre=13.33, PR_post=20.26, EEE_pre=0.976, EEE_post=0.951, JS=0.0199
+  MID (n=44605): SE_pre=3.294, SE_post=4.527, PR_pre=14.55, PR_post=25.91, EEE_pre=0.969, EEE_post=0.876, JS=0.0891
+  TAIL (n=43489): SE_pre=2.947, SE_post=4.148, PR_pre=10.56, PR_post=21.53, EEE_pre=0.977, EEE_post=0.905, JS=0.0608
+Step 1800:
+  HEAD (n=42828): SE_pre=3.155, SE_post=3.716, PR_pre=13.82, PR_post=21.11, EEE_pre=0.975, EEE_post=0.951, JS=0.0189
+  MID (n=44125): SE_pre=3.381, SE_post=4.561, PR_pre=15.79, PR_post=26.53, EEE_pre=0.966, EEE_post=0.870, JS=0.0847
+  TAIL (n=44119): SE_pre=3.051, SE_post=4.194, PR_pre=11.74, PR_post=21.73, EEE_pre=0.974, EEE_post=0.899, JS=0.0579
+Step 2000:
+  HEAD (n=43903): SE_pre=3.198, SE_post=3.662, PR_pre=14.16, PR_post=19.23, EEE_pre=0.973, EEE_post=0.952, JS=0.0144
+  MID (n=44655): SE_pre=3.461, SE_post=4.678, PR_pre=16.96, PR_post=32.01, EEE_pre=0.963, EEE_post=0.862, JS=0.0880
+  TAIL (n=42514): SE_pre=3.092, SE_post=4.289, PR_pre=11.98, PR_post=23.29, EEE_pre=0.973, EEE_post=0.889, JS=0.0613
+Step 2200:
+  HEAD (n=42236): SE_pre=3.251, SE_post=3.680, PR_pre=14.63, PR_post=19.60, EEE_pre=0.971, EEE_post=0.952, JS=0.0118
+  MID (n=44745): SE_pre=3.502, SE_post=4.623, PR_pre=17.36, PR_post=26.65, EEE_pre=0.961, EEE_post=0.863, JS=0.0852
+  TAIL (n=44091): SE_pre=3.164, SE_post=4.334, PR_pre=12.62, PR_post=24.39, EEE_pre=0.971, EEE_post=0.885, JS=0.0585
+Step 2400:
+  HEAD (n=44302): SE_pre=3.286, SE_post=3.591, PR_pre=15.14, PR_post=17.19, EEE_pre=0.970, EEE_post=0.955, JS=0.0115
+  MID (n=43625): SE_pre=3.562, SE_post=4.740, PR_pre=18.19, PR_post=37.75, EEE_pre=0.959, EEE_post=0.859, JS=0.0776
+  TAIL (n=43145): SE_pre=3.213, SE_post=4.384, PR_pre=13.16, PR_post=25.51, EEE_pre=0.969, EEE_post=0.880, JS=0.0587
+Step 2600:
+  HEAD (n=41004): SE_pre=3.342, SE_post=3.597, PR_pre=16.13, PR_post=17.84, EEE_pre=0.968, EEE_post=0.956, JS=0.0081
+  MID (n=44649): SE_pre=3.595, SE_post=4.605, PR_pre=18.74, PR_post=26.99, EEE_pre=0.958, EEE_post=0.863, JS=0.0724
+  TAIL (n=45419): SE_pre=3.288, SE_post=4.410, PR_pre=14.19, PR_post=25.55, EEE_pre=0.967, EEE_post=0.876, JS=0.0571
+Step 2800:
+  HEAD (n=43350): SE_pre=3.357, SE_post=3.560, PR_pre=15.96, PR_post=16.19, EEE_pre=0.967, EEE_post=0.956, JS=0.0082
+  MID (n=44252): SE_pre=3.644, SE_post=4.844, PR_pre=19.08, PR_post=43.72, EEE_pre=0.955, EEE_post=0.847, JS=0.0761
+  TAIL (n=43470): SE_pre=3.322, SE_post=4.507, PR_pre=14.35, PR_post=28.16, EEE_pre=0.966, EEE_post=0.865, JS=0.0599
+Step 3000:
+  HEAD (n=44181): SE_pre=3.352, SE_post=3.468, PR_pre=15.77, PR_post=13.69, EEE_pre=0.967, EEE_post=0.959, JS=0.0094
+  MID (n=46618): SE_pre=3.690, SE_post=4.754, PR_pre=19.87, PR_post=35.14, EEE_pre=0.953, EEE_post=0.853, JS=0.0697
+  TAIL (n=40273): SE_pre=3.367, SE_post=4.572, PR_pre=14.83, PR_post=29.87, EEE_pre=0.964, EEE_post=0.857, JS=0.0618
+Step 3200:
+  HEAD (n=42558): SE_pre=3.429, SE_post=3.566, PR_pre=17.22, PR_post=16.82, EEE_pre=0.965, EEE_post=0.957, JS=0.0063
+  MID (n=44812): SE_pre=3.721, SE_post=4.872, PR_pre=20.25, PR_post=44.20, EEE_pre=0.952, EEE_post=0.843, JS=0.0727
+  TAIL (n=43702): SE_pre=3.394, SE_post=4.555, PR_pre=15.11, PR_post=28.57, EEE_pre=0.963, EEE_post=0.857, JS=0.0589
+Step 3400:
+  HEAD (n=44656): SE_pre=3.422, SE_post=3.446, PR_pre=16.96, PR_post=13.26, EEE_pre=0.965, EEE_post=0.959, JS=0.0110
+  MID (n=45795): SE_pre=3.767, SE_post=4.782, PR_pre=21.44, PR_post=36.28, EEE_pre=0.950, EEE_post=0.851, JS=0.0667
+  TAIL (n=40621): SE_pre=3.447, SE_post=4.631, PR_pre=15.78, PR_post=30.73, EEE_pre=0.961, EEE_post=0.850, JS=0.0617
+Step 3600:
+  HEAD (n=43843): SE_pre=3.443, SE_post=3.543, PR_pre=16.96, PR_post=16.37, EEE_pre=0.964, EEE_post=0.958, JS=0.0054
+  MID (n=44509): SE_pre=3.781, SE_post=4.825, PR_pre=21.23, PR_post=39.23, EEE_pre=0.949, EEE_post=0.845, JS=0.0640
+  TAIL (n=42720): SE_pre=3.465, SE_post=4.660, PR_pre=15.80, PR_post=31.52, EEE_pre=0.960, EEE_post=0.845, JS=0.0614
+Step 3800:
+  HEAD (n=43457): SE_pre=3.461, SE_post=3.471, PR_pre=17.42, PR_post=14.32, EEE_pre=0.963, EEE_post=0.960, JS=0.0073
+  MID (n=44565): SE_pre=3.819, SE_post=4.774, PR_pre=21.99, PR_post=31.96, EEE_pre=0.947, EEE_post=0.847, JS=0.0663
+  TAIL (n=43050): SE_pre=3.505, SE_post=4.667, PR_pre=16.44, PR_post=31.38, EEE_pre=0.958, EEE_post=0.842, JS=0.0598
+Step 4000:
+  HEAD (n=43351): SE_pre=3.516, SE_post=3.572, PR_pre=18.33, PR_post=16.89, EEE_pre=0.961, EEE_post=0.957, JS=0.0047
+  MID (n=43009): SE_pre=3.825, SE_post=4.789, PR_pre=21.94, PR_post=34.28, EEE_pre=0.946, EEE_post=0.846, JS=0.0611
+  TAIL (n=44712): SE_pre=3.523, SE_post=4.664, PR_pre=16.61, PR_post=31.84, EEE_pre=0.958, EEE_post=0.844, JS=0.0573
+Step 4200:
+  HEAD (n=44646): SE_pre=3.506, SE_post=3.564, PR_pre=18.18, PR_post=17.33, EEE_pre=0.961, EEE_post=0.958, JS=0.0041
+  MID (n=45665): SE_pre=3.851, SE_post=4.829, PR_pre=22.27, PR_post=38.43, EEE_pre=0.945, EEE_post=0.846, JS=0.0598
+  TAIL (n=40761): SE_pre=3.552, SE_post=4.713, PR_pre=16.78, PR_post=32.86, EEE_pre=0.956, EEE_post=0.838, JS=0.0594
+Step 4400:
+  HEAD (n=43162): SE_pre=3.516, SE_post=3.512, PR_pre=18.00, PR_post=15.63, EEE_pre=0.961, EEE_post=0.959, JS=0.0062
+  MID (n=45363): SE_pre=3.880, SE_post=4.773, PR_pre=22.86, PR_post=30.68, EEE_pre=0.943, EEE_post=0.844, JS=0.0611
+  TAIL (n=42547): SE_pre=3.586, SE_post=4.757, PR_pre=17.37, PR_post=34.04, EEE_pre=0.955, EEE_post=0.830, JS=0.0607
+Step 4600:
+  HEAD (n=43614): SE_pre=3.529, SE_post=3.411, PR_pre=18.43, PR_post=12.71, EEE_pre=0.960, EEE_post=0.961, JS=0.0121
+  MID (n=44375): SE_pre=3.894, SE_post=4.863, PR_pre=23.14, PR_post=39.55, EEE_pre=0.943, EEE_post=0.840, JS=0.0593
+  TAIL (n=43083): SE_pre=3.593, SE_post=4.764, PR_pre=17.34, PR_post=33.74, EEE_pre=0.954, EEE_post=0.828, JS=0.0610
+Step 4800:
+  HEAD (n=42161): SE_pre=3.520, SE_post=3.410, PR_pre=18.42, PR_post=13.14, EEE_pre=0.961, EEE_post=0.962, JS=0.0113
+  MID (n=44703): SE_pre=3.916, SE_post=4.769, PR_pre=23.62, PR_post=31.26, EEE_pre=0.942, EEE_post=0.845, JS=0.0575
+  TAIL (n=44208): SE_pre=3.626, SE_post=4.769, PR_pre=17.93, PR_post=33.36, EEE_pre=0.953, EEE_post=0.827, JS=0.0603
+Step 5000:
+  HEAD (n=43276): SE_pre=3.546, SE_post=3.348, PR_pre=19.16, PR_post=11.21, EEE_pre=0.960, EEE_post=0.962, JS=0.0181
+  MID (n=44016): SE_pre=3.939, SE_post=4.811, PR_pre=24.00, PR_post=35.73, EEE_pre=0.940, EEE_post=0.843, JS=0.0529
+  TAIL (n=43780): SE_pre=3.640, SE_post=4.780, PR_pre=17.88, PR_post=33.54, EEE_pre=0.952, EEE_post=0.825, JS=0.0597
+Step 5200:
+  HEAD (n=43270): SE_pre=3.499, SE_post=3.432, PR_pre=17.52, PR_post=13.82, EEE_pre=0.961, EEE_post=0.961, JS=0.0081
+  MID (n=43095): SE_pre=3.942, SE_post=4.888, PR_pre=23.88, PR_post=39.84, EEE_pre=0.940, EEE_post=0.837, JS=0.0589
+  TAIL (n=44707): SE_pre=3.645, SE_post=4.769, PR_pre=17.86, PR_post=32.54, EEE_pre=0.951, EEE_post=0.825, JS=0.0587
+Step 5400:
+  HEAD (n=43269): SE_pre=3.550, SE_post=3.428, PR_pre=19.19, PR_post=13.04, EEE_pre=0.960, EEE_post=0.961, JS=0.0122
+  MID (n=44362): SE_pre=3.961, SE_post=4.814, PR_pre=24.38, PR_post=32.27, EEE_pre=0.939, EEE_post=0.839, JS=0.0573
+  TAIL (n=43441): SE_pre=3.673, SE_post=4.850, PR_pre=18.37, PR_post=35.42, EEE_pre=0.950, EEE_post=0.814, JS=0.0633
+Step 5600:
+  HEAD (n=42318): SE_pre=3.530, SE_post=3.480, PR_pre=18.56, PR_post=15.30, EEE_pre=0.960, EEE_post=0.960, JS=0.0068
+  MID (n=44428): SE_pre=3.962, SE_post=4.877, PR_pre=24.08, PR_post=39.03, EEE_pre=0.938, EEE_post=0.836, JS=0.0546
+  TAIL (n=44326): SE_pre=3.680, SE_post=4.852, PR_pre=18.40, PR_post=35.20, EEE_pre=0.950, EEE_post=0.813, JS=0.0634
+Step 5800:
+  HEAD (n=44009): SE_pre=3.489, SE_post=3.386, PR_pre=17.73, PR_post=12.59, EEE_pre=0.961, EEE_post=0.962, JS=0.0098
+  MID (n=46603): SE_pre=3.976, SE_post=4.898, PR_pre=24.82, PR_post=41.69, EEE_pre=0.938, EEE_post=0.836, JS=0.0558
+  TAIL (n=40460): SE_pre=3.682, SE_post=4.865, PR_pre=18.29, PR_post=35.90, EEE_pre=0.949, EEE_post=0.812, JS=0.0630
+Step 6000:
+  HEAD (n=42364): SE_pre=3.509, SE_post=3.361, PR_pre=18.28, PR_post=11.83, EEE_pre=0.961, EEE_post=0.963, JS=0.0132
+  MID (n=44853): SE_pre=3.978, SE_post=4.766, PR_pre=24.52, PR_post=28.05, EEE_pre=0.937, EEE_post=0.841, JS=0.0571
+  TAIL (n=43855): SE_pre=3.699, SE_post=4.869, PR_pre=18.67, PR_post=35.91, EEE_pre=0.948, EEE_post=0.810, JS=0.0627

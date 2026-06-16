@@ -1,5 +1,7 @@
-x: ffn_mult
-y: effective_rank
-fit: log_log_power_law
+fit_space: log_log
+model: power_law
+ci_method: analytic_t_interval
+confidence_level: 0.95
+min_valid_points: 3
 seed: 1337
 spectral_error_policy: warn

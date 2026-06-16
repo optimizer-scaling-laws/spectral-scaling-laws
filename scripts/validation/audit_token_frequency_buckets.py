@@ -3,7 +3,6 @@ import argparse
 import glob
 import hashlib
 import json
-import math
 import os
 from pathlib import Path
 

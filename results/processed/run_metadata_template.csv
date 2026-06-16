@@ -1,0 +1,2 @@
+run_id,paper_experiment,model_scale,model_name,num_layers,base_ffn_dim,width_multiplier,ffn_hidden_dim,optimizer,optimizer_folder,optimizer_variant,optimizer_display_name,dion_rank_fraction,num_gpus,seed,frequency_bucket_reduction,log_dir,config_path,notes
+example_160m_adamw_1x,main_160m_width_sweep,160m,GPT2-160M,12,768,1,768,AdamW,adamw,adamw,AdamW,,4,not_recorded,rank0_local,/path/to/adamw/1d/eigen_metrics_logs,configs/paper_runs/main_160m_width_sweep/adamw/1x.yaml,replace this row with real runs

@@ -12,7 +12,7 @@ import yaml
 
 
 def _read_text_files(root: Path):
-    for base in [root / "README.md", root / "docs", root / "scripts", root / "configs", root / "optimizer_ssl"]:
+    for base in [root / "README.md", root / "docs", root / "scripts", root / "configs", root / "optimizer_ssl", root / "results"]:
         if base.is_file():
             yield base, base.read_text(errors="ignore")
             continue
@@ -26,7 +26,7 @@ def test_public_docs_do_not_leak_internal_analysis_paths():
     banned = ["logs_inductive_bias", "plots_scaling_laws"]
     offenders = []
     for path, text in _read_text_files(root):
-        if path.name == "test_final_polish.py":
+        if path.name in {"test_final_polish.py", "test_processed_artifacts_and_figures.py"}:
             continue
         for token in banned:
             if token in text:
@@ -59,7 +59,8 @@ def test_top_level_import_does_not_eagerly_import_torch():
 
 def test_readme_lists_released_token_frequency_artifacts_once():
     text = Path("README.md").read_text()
-    block = "results/processed/token_frequencies.npy\nresults/processed/token_frequencies.pt\nresults/processed/token_frequency_stats.json"
+    block = "results/processed/token_frequencies.npy\nresults/processed/token_frequency_stats.json"
     assert block in text
     assert "token_frequences" not in text
+    assert "results/processed/token_frequencies.pt" not in text
     assert text.count("results/processed/token_frequencies.npy") >= 2

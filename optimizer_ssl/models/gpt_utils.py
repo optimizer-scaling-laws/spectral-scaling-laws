@@ -11,7 +11,6 @@ for the Optimizer-SSL experiments. See the top-level NOTICE.md for attribution.
 from __future__ import annotations
 
 import glob
-from pathlib import Path
 
 import numpy as np
 import torch

@@ -26,6 +26,7 @@ Paper runs used 4 GPUs.
 CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh adamw
 CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh muon
 CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh normuon
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh dion_r1_2
 CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh dion_r1_16
 ```
 
@@ -48,9 +49,55 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 bash scripts/train/run_width_sweep_350m.sh 
 
 ## Dion rank sweep
 
+The full GPT2-160M Dion rank-sweep grid contains 40 launch configs: AdamW baseline plus Dion rank fractions `1/2`, `1/4`, `1/8`, and `1/16`, each over widths `1x` through `8x`.
+
+Run the full grid:
+
 ```bash
 CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_dion_rank_sweep_160m.sh
 ```
+
+Run one rank family or selected widths:
+
+```bash
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_dion_rank_sweep_160m.sh dion_r1_2 1x 4x 8x
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_dion_rank_sweep_160m.sh adamw 1x
+```
+
+## Matched-loss / extended AdamW grid
+
+The full GPT2-160M matched-loss grid contains 24 launch configs: `adamw_6k`, `adamw_12k`, and `dion_r1_16`, each over widths `1x` through `8x`. `adamw_12k` is identical to `adamw_6k` except for `num_iterations: 12000`; the other two families use `num_iterations: 6000`.
+
+Run the full grid:
+
+```bash
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_matched_loss_160m.sh
+```
+
+Run one family or selected widths:
+
+```bash
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_matched_loss_160m.sh adamw_12k 1x 4x 8x
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_matched_loss_160m.sh dion_r1_16 1x
+```
+
+## Architecture-vs-optimizer head-count grid
+
+The full GPT2-160M architecture-vs-optimizer grid contains 80 launch configs: `heads_12` and `heads_6`, each over AdamW, Muon, NorMuon, Dion rank-1/2, and Dion rank-1/16 across widths `1x` through `8x`. The 6-head ablation changes only `n_head: 6`; all other training, optimizer, data, and telemetry settings match the corresponding 12-head run.
+
+Run the full grid:
+
+```bash
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_architecture_vs_optimizer_160m.sh
+```
+
+Run one head group / optimizer / selected widths:
+
+```bash
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_architecture_vs_optimizer_160m.sh heads_6 adamw 1x 4x 8x
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_architecture_vs_optimizer_160m.sh heads_12 dion_r1_2 1x
+```
+
 ## Frequency-bucketed telemetry mode
 
 All frozen paper configs that enable HEAD/MID/TAIL bucket telemetry explicitly use:

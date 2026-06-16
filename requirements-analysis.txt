@@ -1,0 +1,2 @@
+# Analysis and figure-generation dependencies.
+matplotlib>=3.7

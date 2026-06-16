@@ -164,7 +164,7 @@ class GPTEigenMetricsTracker:
                 raise ValueError("track_by_frequency=True requires either token_freq_file or token_freq_table")
             
             if global_rank == 0:
-                print(f"Frequency tracking enabled")
+                print("Frequency tracking enabled")
                 print(f"Frequency bucket reduction: {self.frequency_bucket_reduction}")
                 print(self.token_freq_table.summary())
         else:
@@ -216,10 +216,10 @@ class GPTEigenMetricsTracker:
                 if self.gather_statistics and world_size > 1:
                     self.log_file.write(f"# Computing metrics across all {world_size} ranks\n")
                 else:
-                    self.log_file.write(f"# Computing metrics from rank 0 only\n")
+                    self.log_file.write("# Computing metrics from rank 0 only\n")
                 self.log_file.write(f"# Spectral telemetry error policy: {self.error_policy}\n")
                 if track_by_frequency:
-                    self.log_file.write(f"# Frequency-bucketed metrics enabled\n")
+                    self.log_file.write("# Frequency-bucketed metrics enabled\n")
                     self.log_file.write(f"# Frequency bucket reduction: {self.frequency_bucket_reduction}\n")
                     self.log_file.write(f"# Frequency logs in: {self.freq_output_dir}\n")
                 self.log_file.flush()
@@ -343,7 +343,7 @@ class GPTEigenMetricsTracker:
         if self.global_rank == 0 and hasattr(self, 'log_file'):
             self.log_file.write(f"Temporarily disabled activation collection at step {self.current_step}\n")
             self.log_file.flush()
-            print(f"Disabled eigenvalue metrics collection for evaluation")
+            print("Disabled eigenvalue metrics collection for evaluation")
 
     def enable_collection(self):
         """Re-enable activation collection if we're in a tracking step."""
@@ -352,7 +352,7 @@ class GPTEigenMetricsTracker:
             if self.global_rank == 0 and hasattr(self, 'log_file'):
                 self.log_file.write(f"Re-enabled activation collection at step {self.current_step}\n")
                 self.log_file.flush()
-                print(f"Re-enabled eigenvalue metrics collection after evaluation")
+                print("Re-enabled eigenvalue metrics collection after evaluation")
     
     def register_hooks(self, model):
         """
@@ -965,6 +965,6 @@ class GPTEigenMetricsTracker:
         self.token_ids_buffer = []
         
         if self.global_rank == 0 and hasattr(self, 'log_file'):
-            self.log_file.write(f"Eigenmetrics tracker cleaned up successfully\n")
+            self.log_file.write("Eigenmetrics tracker cleaned up successfully\n")
             self.log_file.flush()
             self.log_file.close()

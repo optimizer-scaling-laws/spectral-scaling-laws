@@ -1,0 +1,37 @@
+{
+  "n_runs": 40,
+  "n_layer_metric_rows": 119034,
+  "n_global_scaling_points": 80,
+  "n_frequency_bucket_scaling_points": 240,
+  "n_main_beta_rows": 10,
+  "n_frequency_bucket_beta_rows": 30,
+  "widths": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "optimizers": [
+    "adamw",
+    "dion_r1_2",
+    "dion_r1_16",
+    "muon",
+    "normuon"
+  ],
+  "final_samples": 5,
+  "source": "submitted-run processed artifacts generated from external raw logs",
+  "included_in_repository": [
+    "run_metadata.csv",
+    "global_rank_scaling_points.csv",
+    "frequency_bucket_rank_scaling_points.csv",
+    "main_beta_table.csv",
+    "frequency_bucket_beta_table.csv"
+  ],
+  "not_included_in_repository": [
+    "layer_metrics.csv (large; regenerate from raw logs)"
+  ]
+}

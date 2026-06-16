@@ -1,0 +1,38 @@
+{
+  "root": "external://submitted_logs/dion_rank_sweep",
+  "out_dir": "results/processed",
+  "n_runs": 40,
+  "n_layer_rows": 29758,
+  "n_points": 80,
+  "n_beta_rows": 10,
+  "n_delta_rows": 5,
+  "optimizers": [
+    "adamw",
+    "dion_r1_2",
+    "dion_r1_4",
+    "dion_r1_8",
+    "dion_r1_16"
+  ],
+  "widths": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "final_samples": 5,
+  "bucket": "tail",
+  "source": "submitted-run processed artifacts generated from external raw logs",
+  "included_in_repository": [
+    "dion_rank_sweep_run_metadata.csv",
+    "dion_tail_rank_sweep_points.csv",
+    "dion_tail_rank_sweep_beta_table.csv"
+  ],
+  "excluded_from_repository": [
+    "dion_tail_layer_metrics.csv",
+    "raw eigen_metrics_logs/"
+  ]
+}

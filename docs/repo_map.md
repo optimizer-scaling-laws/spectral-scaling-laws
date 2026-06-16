@@ -9,7 +9,7 @@
 
 ## `configs/`
 
-Frozen launch configs live under `configs/paper_runs/`. Reusable reference snippets live under `configs/components/`. Example configs that are not paper-scale live under `configs/examples/`.
+Frozen launch configs live under `configs/paper_runs/`, including the main width sweeps, Dion rank sweep, matched-loss grid, and architecture-vs-optimizer head-count grid. Reusable reference snippets live under `configs/components/`. Example configs that are not paper-scale live under `configs/examples/`.
 
 ## `data/`
 
@@ -31,7 +31,7 @@ The reusable Python package for this project:
   - `tracker.py`: `GPTEigenMetricsTracker`, the training-time hook/logging orchestrator.
   - `eigen_metrics_gpt.py`: compatibility shim for older imports.
 - `scaling/`: power-law fitting helpers.
-- `analysis/`: reserved for cleaned paper-analysis code.
+- `analysis/`: log-schema normalization, raw eigen-log parsers, rank aggregation, and figure helpers.
 - `utils/`: small shared utilities.
 
 ## `third_party/dion/`
@@ -45,22 +45,41 @@ User-facing commands:
 - `preprocess/`: download/create data and compute token frequencies.
 - `validation/`: audit released token-frequency buckets against raw shards.
 - `train/`: launch single runs, sweeps, and Slurm examples.
-- `analysis/`: reserved for cleaned analysis entrypoints.
-- `reproduce/`: reserved for one-command reproduction wrappers.
+- `analysis/`: parse raw eigen logs, aggregate rank-scaling points, and regenerate figure PDFs.
+- `reproduce/`: wrappers for processed-CSV figure reproduction and the main raw-log-to-CSV path.
 
 ## `results/`
 
 Small released artifacts and generated paper outputs. Raw logs/checkpoints are not committed.
 
+Important files:
+
+- `results/figure_manifest.csv`: figure provenance and reproduction-status audit.
+- `results/processed/`: compact processed CSV/NumPy artifacts.
+- `results/figures/`: publication-quality PDF figures only.
+- `results/external_artifacts.md`: where external raw-log/checkpoint bundles can be recorded.
+
 ## `docs/`
 
-Human-facing explanations for method, metrics, data, training, reproduction, and troubleshooting.
+Human-facing explanations for method, metrics, data, training, reproduction, compute, artifact formats, and release status.
+
+## `examples/`
+
+CPU-safe standalone diagnostic examples that run metric code without the GPT training stack.
 
 ## `tests/`
 
 CPU-safe tests designed to run quickly in CI.
 
-### `optimizer_ssl/train/` module layout
+## `notebooks/`
+
+Colab-ready, executed notebooks for lightweight public reproduction. The current notebook, `notebooks/reproduce_main_figures.ipynb`, regenerates the headline 160M global and frequency-bucket scaling views from committed processed CSVs only. It does not train models, load checkpoints, or require a GPU.
+
+## Removed placeholder folders
+
+The empty `assets/` placeholder remains removed. Add it only if it contains polished reusable artifacts.
+
+## `optimizer_ssl/train/` module layout
 
 The training package is intentionally modularized around the main loop without turning the repo into a large framework:
 
@@ -77,10 +96,3 @@ The public launch surface is unchanged: use `torchrun ... train.py --config ...`
 ## Citation and project links
 
 See `docs/citation.md` and `CITATION.cff` for the paper, project website, repository URL, and citation metadata.
-
-## Pre-analysis hardening additions
-
-- `optimizer_ssl/probe.py` provides the model-agnostic CPU-safe spectral diagnostic API.
-- `examples/` contains small scripts that run the metric code without the GPT training stack.
-- `.github/workflows/ci.yml` runs CPU-safe tests on pull requests.
-- `docs/reproducibility.md` documents seeds, frequency-bucket reduction modes, and artifact formats.

@@ -1,0 +1,61 @@
+paper_experiment,model_scale,model_name,head_count,bucket,metric,optimizer,optimizer_folder,optimizer_variant,optimizer_display_name,beta,source
+architecture_vs_optimizer,160m,GPT2-160M,12,head,soft_rank,AdamW,adamw,adamw,AdamW,0.441,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,head,soft_rank,Muon,muon,muon,Muon,0.884,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,head,soft_rank,NorMuon,normuon,normuon,NorMuon,0.898,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,head,soft_rank,Dion,dion_r1_2,dion_r1_2,Dion (1/2),0.886,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,head,soft_rank,Dion,dion_r1_16,dion_r1_16,Dion (1/16),0.699,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,head,hard_rank,AdamW,adamw,adamw,AdamW,0.263,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,head,hard_rank,Muon,muon,muon,Muon,0.593,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,head,hard_rank,NorMuon,normuon,normuon,NorMuon,0.429,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,head,hard_rank,Dion,dion_r1_2,dion_r1_2,Dion (1/2),0.52,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,head,hard_rank,Dion,dion_r1_16,dion_r1_16,Dion (1/16),0.349,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,mid,soft_rank,AdamW,adamw,adamw,AdamW,0.449,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,mid,soft_rank,Muon,muon,muon,Muon,0.885,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,mid,soft_rank,NorMuon,normuon,normuon,NorMuon,0.93,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,mid,soft_rank,Dion,dion_r1_2,dion_r1_2,Dion (1/2),0.815,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,mid,soft_rank,Dion,dion_r1_16,dion_r1_16,Dion (1/16),0.679,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,mid,hard_rank,AdamW,adamw,adamw,AdamW,0.242,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,mid,hard_rank,Muon,muon,muon,Muon,0.927,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,mid,hard_rank,NorMuon,normuon,normuon,NorMuon,0.945,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,mid,hard_rank,Dion,dion_r1_2,dion_r1_2,Dion (1/2),0.666,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,mid,hard_rank,Dion,dion_r1_16,dion_r1_16,Dion (1/16),0.46,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,tail,soft_rank,AdamW,adamw,adamw,AdamW,0.618,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,tail,soft_rank,Muon,muon,muon,Muon,1.026,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,tail,soft_rank,NorMuon,normuon,normuon,NorMuon,1.042,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,tail,soft_rank,Dion,dion_r1_2,dion_r1_2,Dion (1/2),0.952,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,tail,soft_rank,Dion,dion_r1_16,dion_r1_16,Dion (1/16),0.718,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,tail,hard_rank,AdamW,adamw,adamw,AdamW,0.438,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,tail,hard_rank,Muon,muon,muon,Muon,1.021,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,tail,hard_rank,NorMuon,normuon,normuon,NorMuon,1.038,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,tail,hard_rank,Dion,dion_r1_2,dion_r1_2,Dion (1/2),0.879,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,12,tail,hard_rank,Dion,dion_r1_16,dion_r1_16,Dion (1/16),0.404,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,head,soft_rank,AdamW,adamw,adamw,AdamW,0.691,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,head,soft_rank,Muon,muon,muon,Muon,1.303,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,head,soft_rank,NorMuon,normuon,normuon,NorMuon,0.765,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,head,soft_rank,Dion,dion_r1_2,dion_r1_2,Dion (1/2),0.68,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,head,soft_rank,Dion,dion_r1_16,dion_r1_16,Dion (1/16),0.651,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,head,hard_rank,AdamW,adamw,adamw,AdamW,0.608,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,head,hard_rank,Muon,muon,muon,Muon,1.244,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,head,hard_rank,NorMuon,normuon,normuon,NorMuon,0.489,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,head,hard_rank,Dion,dion_r1_2,dion_r1_2,Dion (1/2),0.39,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,head,hard_rank,Dion,dion_r1_16,dion_r1_16,Dion (1/16),0.388,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,mid,soft_rank,AdamW,adamw,adamw,AdamW,0.596,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,mid,soft_rank,Muon,muon,muon,Muon,1.115,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,mid,soft_rank,NorMuon,normuon,normuon,NorMuon,1.034,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,mid,soft_rank,Dion,dion_r1_2,dion_r1_2,Dion (1/2),0.83,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,mid,soft_rank,Dion,dion_r1_16,dion_r1_16,Dion (1/16),0.668,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,mid,hard_rank,AdamW,adamw,adamw,AdamW,0.671,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,mid,hard_rank,Muon,muon,muon,Muon,1.221,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,mid,hard_rank,NorMuon,normuon,normuon,NorMuon,1.076,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,mid,hard_rank,Dion,dion_r1_2,dion_r1_2,Dion (1/2),0.58,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,mid,hard_rank,Dion,dion_r1_16,dion_r1_16,Dion (1/16),0.367,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,tail,soft_rank,AdamW,adamw,adamw,AdamW,0.669,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,tail,soft_rank,Muon,muon,muon,Muon,1.224,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,tail,soft_rank,NorMuon,normuon,normuon,NorMuon,1.061,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,tail,soft_rank,Dion,dion_r1_2,dion_r1_2,Dion (1/2),0.918,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,tail,soft_rank,Dion,dion_r1_16,dion_r1_16,Dion (1/16),0.716,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,tail,hard_rank,AdamW,adamw,adamw,AdamW,0.751,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,tail,hard_rank,Muon,muon,muon,Muon,1.388,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,tail,hard_rank,NorMuon,normuon,normuon,NorMuon,1.015,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,tail,hard_rank,Dion,dion_r1_2,dion_r1_2,Dion (1/2),0.865,processed_beta_values_from_main_paper_figure
+architecture_vs_optimizer,160m,GPT2-160M,6,tail,hard_rank,Dion,dion_r1_16,dion_r1_16,Dion (1/16),0.393,processed_beta_values_from_main_paper_figure

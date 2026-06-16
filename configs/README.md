@@ -8,7 +8,9 @@ Launchable YAML files for the paper experiments:
 
 - `main_160m_width_sweep/`: 160M-family width sweep, 4-GPU launch scripts, FFN multipliers `1x` to `8x`.
 - `main_350m_width_sweep/`: 350M-family width sweep, 8-GPU launch scripts, FFN multipliers `1x` to `4x`.
-- `dion_rank_sweep/160m/`: Dion rank-fraction sweep at 160M.
+- `dion_rank_sweep/160m/`: full 40-run Dion rank-fraction sweep at 160M, including AdamW baseline and Dion ranks `1/2`, `1/4`, `1/8`, `1/16` over widths `1x`–`8x`.
+- `matched_loss/160m/`: full 24-run matched-loss / extended-AdamW grid at 160M, including `adamw_6k`, `adamw_12k`, and `dion_r1_16` over widths `1x`–`8x`.
+- `architecture_vs_optimizer/160m/`: full 80-run head-count grid at 160M, including `heads_12` and `heads_6` for AdamW, Muon, NorMuon, Dion rank-1/2, and Dion rank-1/16 over widths `1x`–`8x`.
 
 ## `components/`
 
