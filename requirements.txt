@@ -1,0 +1,9 @@
+# Full training environment dependencies. For CPU-only spectral diagnostics,
+# use: pip install -e ".[metrics]"
+torch>=2.1
+triton>=2.1; platform_system != "Darwin"
+numpy>=1.24
+pyyaml>=6.0
+tqdm>=4.66
+wandb>=0.16
+huggingface_hub>=0.23

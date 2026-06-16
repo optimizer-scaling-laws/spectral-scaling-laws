@@ -1,0 +1,26 @@
+{
+  "vocab_size": 50304,
+  "total_tokens": 10255376574,
+  "nonzero_tokens": 50101,
+  "zero_frequency_tokens": 203,
+  "head_min_frequency": 32815898,
+  "mid_min_frequency": 900178,
+  "bucket_definition": "occurrence-mass tertiles over GPT-2 vocabulary token frequencies",
+  "buckets": {
+    "head": {
+      "num_tokens": 30,
+      "num_occurrences": 3362470752,
+      "percent_occurrences": 32.78739488534017
+    },
+    "mid": {
+      "num_tokens": 1215,
+      "num_occurrences": 3508351299,
+      "percent_occurrences": 34.20987360808697
+    },
+    "tail": {
+      "num_tokens": 49059,
+      "num_occurrences": 3384554523,
+      "percent_occurrences": 33.002733359259615
+    }
+  }
+}

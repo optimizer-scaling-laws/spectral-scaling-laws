@@ -1,0 +1,7 @@
+# Training dependencies on top of the base package.
+-r requirements-metrics.txt
+triton>=2.1; platform_system != "Darwin"
+pyyaml>=6.0
+tqdm>=4.66
+wandb>=0.16
+huggingface_hub>=0.23

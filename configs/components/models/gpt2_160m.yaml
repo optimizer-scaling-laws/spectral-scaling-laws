@@ -1,0 +1,7 @@
+model_dim: 768
+n_layer: 12
+n_head: 12
+sequence_length: 512
+postln_frac: 0.0
+seed: 1337
+spectral_error_policy: warn

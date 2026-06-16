@@ -1,0 +1,5 @@
+x: ffn_mult
+y: effective_rank
+fit: log_log_power_law
+seed: 1337
+spectral_error_policy: warn

@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.env
+.venv/
+venv/
+conda-meta/
+
+# Logs / local outputs
+outputs/
+runs/
+wandb/
+*.log
+tiny_debug.log
+
+# Checkpoints and large tensors
+checkpoints/
+checkpoint*/
+*.ckpt
+*.safetensors
+*.pth
+
+# Raw data shards
+/data/fineweb10B/*.bin
+/data/tiny_debug/*.bin
+/data/fineweb100B/*.bin
+/data/finewebedu10B/*.bin
+*.idx
+*.npy
+*.npz
+
+# Keep the released small token-frequency table
+!results/processed/token_frequencies.pt
+!results/processed/token_frequencies.npy
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/

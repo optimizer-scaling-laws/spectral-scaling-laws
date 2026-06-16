@@ -1,0 +1,5 @@
+data_dir: data/fineweb10B
+vocab_size: 50304
+token_file_format: headered_uint16
+seed: 1337
+spectral_error_policy: warn

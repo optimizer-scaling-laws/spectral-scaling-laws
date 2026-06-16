@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: "Optimizer-Induced Spectral Scaling Laws"
+message: "If you use this code, please cite the paper and this repository."
+type: software
+authors:
+  - family-names: Jha
+    given-names: Nandan Kumar
+  - family-names: Reagen
+    given-names: Brandon
+version: 0.1.0
+date-released: 2026-06-15
+repository-code: "https://github.com/optimizer-scaling-laws/spectral-scaling-laws"
+url: "https://optimizer-scaling-laws.github.io/"
+preferred-citation:
+  type: article
+  title: "Same Architecture, Different Capacity: Optimizer-Induced Spectral Scaling Laws"
+  authors:
+    - family-names: Jha
+      given-names: Nandan Kumar
+    - family-names: Reagen
+      given-names: Brandon
+  year: 2026
+  identifiers:
+    - type: doi
+      value: "10.48550/arXiv.2605.21803"
+  url: "https://arxiv.org/abs/2605.21803"

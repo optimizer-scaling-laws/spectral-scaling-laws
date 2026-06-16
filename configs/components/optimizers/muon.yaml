@@ -1,0 +1,8 @@
+optimizer: muon
+scalar_opt: lion
+lr: 0.02
+mu: 0.95
+weight_decay: 0.01
+adjust_lr: spectral_norm
+seed: 1337
+spectral_error_policy: warn

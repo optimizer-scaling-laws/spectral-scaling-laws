@@ -1,0 +1,4 @@
+format: pdf
+dpi: 300
+seed: 1337
+spectral_error_policy: warn

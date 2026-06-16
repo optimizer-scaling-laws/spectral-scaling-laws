@@ -1,0 +1,4 @@
+n_bootstrap: 1000
+ci: 0.95
+seed: 1337
+spectral_error_policy: warn

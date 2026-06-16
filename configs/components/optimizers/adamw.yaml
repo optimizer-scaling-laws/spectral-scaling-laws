@@ -1,0 +1,7 @@
+optimizer: adamw
+scalar_opt: adamw
+lr: 0.003
+mu: 0.95
+weight_decay: 0.01
+seed: 1337
+spectral_error_policy: warn

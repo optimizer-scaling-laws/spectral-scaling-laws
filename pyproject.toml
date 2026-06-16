@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spectral-scaling-laws"
+version = "0.1.0"
+description = "Code and artifacts for optimizer-induced spectral scaling laws in language models."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Nandan Kumar Jha"}, {name = "Brandon Reagen"}]
+dependencies = [
+  "numpy>=1.24",
+  "torch>=2.1",
+]
+
+[project.optional-dependencies]
+metrics = ["numpy>=1.24", "torch>=2.1"]
+train = [
+  "pyyaml>=6.0",
+  "tqdm>=4.66",
+  "wandb>=0.16",
+  "huggingface_hub>=0.23",
+  "triton>=2.1; platform_system != 'Darwin'",
+]
+dev = [
+  "pytest>=7.4",
+  "ruff>=0.5",
+  "black>=24.0",
+  "pre-commit>=3.5",
+  "pyyaml>=6.0",
+  "tqdm>=4.66",
+]
+
+[tool.setuptools.packages.find]
+where = [".", "third_party/dion"]
+include = ["optimizer_ssl*", "dion*"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.black]
+line-length = 100
+
+[project.urls]
+Homepage = "https://optimizer-scaling-laws.github.io/"
+Paper = "https://arxiv.org/abs/2605.21803"
+Repository = "https://github.com/optimizer-scaling-laws/spectral-scaling-laws"
