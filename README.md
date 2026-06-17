@@ -23,13 +23,13 @@ Official code for paper **[Same Architecture, Different Capacity: Optimizer-Indu
 
 Realized representation capacity is not architecture-only, rather it emerges from the architecture–optimizer interaction. Holding the Transformer architecture and width schedule fixed, different optimizers turn added FFN width into usable capacity at different rates, changing the *scaling exponents* of the realized capacity. This distinction is more visible in **hard** spectral rank:  AdamW scales at **β ≈ 0.29** while Muon and NorMuon reach **β ≈ 0.80**, even though soft rank grows with width across all optimizers. On rare (TAIL) tokens the gap widens further-- AdamW **β ≈ 0.44** vs. Muon **β ≈ 1.02**, a **2.3× larger exponent**. These optimizer-induced shifts can **exceed** the effect of architectural interventions (e.g., attention rank intervention).
 
-## Reproduce the headline result in 60 seconds
+## Reproduce main results
 
-No GPU, no training, no raw logs. The Colab notebook refits the scaling exponents and regenerates the main figures directly from the committed processed CSVs:
+The Colab notebook re-fits the scaling exponents and produce the main figures directly from the raw logs generated at pre-trianing:
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/optimizer-scaling-laws/spectral-scaling-laws/blob/main/notebooks/reproduce_main_figures.ipynb)
 
-To regenerate every committed PDF figure locally:
+To re-generate other plots:
 
 ```bash
 pip install -e ".[metrics,analysis]"
