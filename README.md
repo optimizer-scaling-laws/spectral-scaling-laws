@@ -1,10 +1,10 @@
-# Same Architecture, Different Capacity: Optimizer-Induced Spectral Scaling Laws
+# Optimizer-Induced Spectral Scaling Laws
 
 [![CI](https://github.com/optimizer-scaling-laws/spectral-scaling-laws/actions/workflows/ci.yml/badge.svg)](https://github.com/optimizer-scaling-laws/spectral-scaling-laws/actions/workflows/ci.yml)
 [![arXiv](https://img.shields.io/badge/arXiv-2605.21803-b31b1b.svg)](https://arxiv.org/abs/2605.21803)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Code and reproducible artifacts for our paper **[Same Architecture, Different Capacity: Optimizer-Induced Spectral Scaling Laws](https://arxiv.org/abs/2605.21803)** — Nandan Kumar Jha and Brandon Reagen.
+Official code for paper **[Same Architecture, Different Capacity: Optimizer-Induced Spectral Scaling Laws](https://arxiv.org/abs/2605.21803)**.
 
 <div align="center">
   <a href="https://arxiv.org/abs/2605.21803"><img src="https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png" height="16" width="16" style="vertical-align:middle"> <b>Paper</b></a> &nbsp;|&nbsp;
