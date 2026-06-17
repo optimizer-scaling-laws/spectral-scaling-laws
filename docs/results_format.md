@@ -4,7 +4,7 @@ The repository separates raw logs, large intermediate tables, compact processed 
 
 ## Raw logs
 
-Raw eigen telemetry logs are text files produced during training. The paper's legacy logs use names such as `SE_post` and `PR_post`; released-code logs use the cleaner `spectral_entropy`, `soft_rank`, and `hard_rank` vocabulary in normalized CSVs. Raw logs are parsed through `optimizer_ssl.analysis.log_schema` before analysis.
+Raw eigen telemetry logs are text files produced during training. The paper-run logs use names such as `SE_post` and `PR_post`; released-code logs use the cleaner `spectral_entropy`, `soft_rank`, and `hard_rank` vocabulary in normalized CSVs. Raw logs are parsed through `optimizer_ssl.analysis.log_schema` before analysis.
 
 Full raw logs can be large and should normally be distributed as external artifacts. The repository includes only small examples under `results/sample_logs/`.
 
@@ -144,3 +144,16 @@ results/processed/architecture_vs_optimizer_comparison.csv
 ```
 
 `architecture_vs_optimizer_beta_values.csv` contains one row per head count, bucket, rank metric, and optimizer. `architecture_vs_optimizer_comparison.csv` contains the derived quantities plotted in the figure: the absolute architectural beta shift `|beta_6h - beta_12h|` and the optimizer-induced reference gain `max_o beta_{o,12h} - beta_{AdamW,12h}`.
+
+## Log-schema normalization
+
+Training-time and older paper-run logs may use different names for the same spectral quantities. Public processed CSVs should use the normalized vocabulary.
+
+| Legacy field family | Normalized field family | Notes |
+|---|---|---|
+| `SE_post` and the matching pre-activation entropy field | `spectral_entropy_post` / `spectral_entropy_pre` | raw spectral entropy |
+| `exp(SE_post)` and the matching pre-activation quantity | `soft_rank_post` / `soft_rank_pre` | effective rank from spectral entropy |
+| `PR_post` and the matching pre-activation participation-ratio field | `hard_rank_post` / `hard_rank_pre` | participation-ratio hard rank |
+| older auxiliary entropy/divergence diagnostics | ignored | auxiliary diagnostics not used in this repository's public metric vocabulary |
+
+The helper `optimizer_ssl.analysis.log_schema.parse_layer_metric_line` performs this normalization before raw logs are aggregated into processed CSVs.

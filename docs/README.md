@@ -1,42 +1,17 @@
 # Documentation
 
-A guide to the docs in this directory, grouped by what you're trying to do.
+A compact guide to the documentation in this repository.
 
-**Understand the work**
-| Doc | Covers |
+| Doc | Use it for |
 |---|---|
-| [paper_summary.md](paper_summary.md) | One-paragraph overview of the paper and its central claim |
-| [method.md](method.md) | The measurement pipeline, end to end |
-| [metrics.md](metrics.md) | Soft / hard spectral rank and the HEAD/MID/TAIL frequency buckets |
+| [data.md](data.md) | FineWeb10B shards, token-frequency tables, and HEAD/MID/TAIL bucket preparation |
+| [metrics.md](metrics.md) | Soft rank, hard rank, spectral entropy, bucketed telemetry, and Tail Integrity Index |
+| [optimizers.md](optimizers.md) | Optimizer component configs, Dion/Muon attribution, and adding new optimizers |
+| [training.md](training.md) | Launching the frozen 160M/350M experiment grids |
+| [reproduction.md](reproduction.md) | Reproduction tiers, figure regeneration, raw-log parsing, seeds, and release boundary |
+| [results_format.md](results_format.md) | Processed CSV schemas, log-schema normalization, and figure-manifest fields |
+| [diagnostic_api.md](diagnostic_api.md) | Running the standalone spectral-rank diagnostic on your own activations |
+| [compute_budget.md](compute_budget.md) | Model scales, run counts, hardware, and compute expectations |
+| [troubleshooting.md](troubleshooting.md) | Common installation, data, CUDA, WandB, and distributed-training issues |
 
-**Run it**
-| Doc | Covers |
-|---|---|
-| [getting_started.md](getting_started.md) | Fresh clone → install → tests → tiny smoke run |
-| [training.md](training.md) | Full launch matrix for every experiment grid |
-| [data.md](data.md) | FineWeb10B preparation and token-frequency buckets |
-| [diagnostic_api.md](diagnostic_api.md) | Running the spectral-rank diagnostic on your own model |
-
-**Reproduce the results**
-| Doc | Covers |
-|---|---|
-| [reproduction.md](reproduction.md) | Regenerating figures from processed CSVs and from raw logs |
-| [analysis_inventory.md](analysis_inventory.md) | Figure ↔ script ↔ processed-CSV map |
-| [results_format.md](results_format.md) | Schema of the processed CSV artifacts |
-| [reproducibility.md](reproducibility.md) | Seeds, reduction modes, and interval semantics |
-
-**Scope, compute, and provenance**
-| Doc | Covers |
-|---|---|
-| [compute_budget.md](compute_budget.md) | Model sizes, run grids, and hardware |
-| [release_audit.md](release_audit.md) | What reproduces from this repo vs. external artifacts |
-| [optimizer_hyperparameters.md](optimizer_hyperparameters.md) | Optimizer hyperparameter surface used by the frozen configs |
-| [optimizer_implementations.md](optimizer_implementations.md) | Vendored Dion / Muon / NorMuon attribution |
-| [adding_new_optimizer.md](adding_new_optimizer.md) | Extending the registry with a new optimizer |
-
-**Reference**
-| Doc | Covers |
-|---|---|
-| [repo_map.md](repo_map.md) | Per-file guide to the repository |
-| [troubleshooting.md](troubleshooting.md) | Common issues |
-| [faq.md](faq.md) | Frequently asked questions |
+The top-level [README](../README.md) is the public landing page and includes the paper summary, quick reproduction commands, experiment matrix, and citation.

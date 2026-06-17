@@ -67,7 +67,7 @@ bash scripts/reproduce/reproduce_main_results_from_logs.sh \
   results/processed
 ```
 
-This parses raw legacy or released eigen logs into `layer_metrics.csv`, then rebuilds the main global and HEAD/MID/TAIL scaling-point CSVs and beta tables.
+This parses raw paper-run or released eigen logs into `layer_metrics.csv`, then rebuilds the main global and HEAD/MID/TAIL scaling-point CSVs and beta tables.
 
 This raw-log wrapper covers the main parser/aggregation path. All committed figure families have full launch-config grid coverage, but the paper's raw logs for the special figure families remain external. Their committed processed inputs are:
 
@@ -77,3 +77,31 @@ This raw-log wrapper covers the main parser/aggregation path. All committed figu
 - Architecture-vs-optimizer: configs under `configs/paper_runs/architecture_vs_optimizer/160m/`; processed inputs `architecture_vs_optimizer_beta_values.csv`, `architecture_vs_optimizer_comparison.csv`.
 
 External raw-log bundles can be recorded in `results/external_artifacts.md`.
+
+## Reproducibility notes
+
+Released configs include:
+
+```yaml
+seed: 1337
+spectral_error_policy: warn
+```
+
+The training entrypoint seeds model initialization, dataloader construction, and optimizer construction before the run starts. The paper experiments used one training run per configuration rather than a multi-seed sweep. Scaling-exponent intervals in the processed beta tables are ordinary least-squares log-log fit intervals over width points; they are not multi-seed confidence intervals.
+
+For paper-run logs where the seed was not recorded explicitly, metadata uses `seed=not_recorded` rather than inventing a value.
+
+Frequency-bucketed HEAD/MID/TAIL telemetry has two supported reduction modes:
+
+- `rank0_local`: rank-0 local bucket metrics, matching the paper-run configs.
+- `distributed_covariance`: globally reduced bucket covariance statistics for new multi-GPU bucket telemetry.
+
+The committed configs use `rank0_local` for compatibility with the released processed artifacts. The preferred public token-frequency artifact is `results/processed/token_frequencies.npy`; older local `.pt` files remain supported by the loader for compatibility but are not committed.
+
+## Release boundary
+
+The repository commits compact processed CSVs, PDF figures, launch configs, token-frequency artifacts, and CPU-safe tests. Full paper raw logs, checkpoints, and large per-layer/per-step intermediate CSVs remain external artifacts.
+
+Every committed PDF under `results/figures/` regenerates from committed processed artifacts with `make figures`. The main 160M raw-log parser path is included for users who have external `eigen_metrics_logs/` bundles. Special figure families — Dion rank sweep, matched-loss, GPT2-350M TAIL, and architecture-vs-optimizer — include processed inputs and full launch-config grids; rebuilding their processed CSVs from raw logs requires external raw-log bundles.
+
+The source of truth for figure provenance is `results/figure_manifest.csv`. External raw-log or checkpoint bundles can be recorded in `results/external_artifacts.md`.

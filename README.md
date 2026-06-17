@@ -5,7 +5,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Code and reproducible artifacts for our paper **[Same Architecture, Different Capacity: Optimizer-Induced Spectral Scaling Laws](https://arxiv.org/abs/2605.21803)** — Nandan Kumar Jha and Brandon Reagen.
-[📄 Paper](https://arxiv.org/abs/2605.21803) · [🌐 Project page](https://optimizer-scaling-laws.github.io/) · [▶️ Reproduce in Colab](https://colab.research.google.com/github/optimizer-scaling-laws/spectral-scaling-laws/blob/main/notebooks/reproduce_main_figures.ipynb)
+
+<div align="center">
+  <a href="https://arxiv.org/abs/2605.21803"><img src="https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png" height="16" width="16" style="vertical-align:middle"> <b>Paper</b></a> &nbsp;|&nbsp;
+  <a href="https://optimizer-scaling-laws.github.io/">🌐 <b>Project Page</b></a> &nbsp;|&nbsp;
+  <a href="https://colab.research.google.com/github/optimizer-scaling-laws/spectral-scaling-laws/blob/main/notebooks/reproduce_main_figures.ipynb"><img src="https://colab.research.google.com/img/colab_favicon_256px.png" height="16" width="16" style="vertical-align:middle"> <b>Reproduce in Colab</b></a>
+</div>
+
+<br>
 
 <p align="center">
   <img src="assets/teaser.png" width="900" alt="Spectral scaling exponents depend on optimizer choice (soft and hard spectral rank vs FFN width)"><br>
@@ -25,16 +32,21 @@ No GPU, no training, no raw logs. The Colab notebook refits the scaling exponent
 To regenerate every committed PDF figure locally:
 
 ```bash
-pip install -e ".[dev]"
+pip install -e ".[metrics,analysis]"
 make figures      # writes all figures to results/figures/
 ```
 
 ## Installation
 
-```bash
-pip install -e ".[dev]"        # full stack + tests
-pip install -e ".[metrics]"    # just the spectral diagnostics (NumPy + PyTorch, CPU-friendly)
-```
+`pyproject.toml` is the single source of truth for dependencies — install only the extras you need:
+
+| Extra | Command | For |
+|---|---|---|
+| `metrics` | `pip install -e ".[metrics]"` | CPU spectral diagnostics (NumPy + PyTorch) |
+| `analysis` | `pip install -e ".[analysis]"` | figure scripts and the Colab notebook path |
+| `train` | `pip install -e ".[train]"` | training stack (configs, WandB, HF cache, Triton) |
+| `dev` | `pip install -e ".[dev]"` | tests, linting, and release checks |
+| `metrics,analysis` | `pip install -e ".[metrics,analysis]"` | figure reproduction without training deps |
 
 ## Run the diagnostic on your own model
 
@@ -68,7 +80,7 @@ results/
   └── figure_manifest.csv per-figure provenance: inputs, command, raw-log coverage
 notebooks/                Colab-ready headline reproduction
 third_party/dion/         vendored Dion / Muon / NorMuon implementations (upstream notices preserved)
-docs/                     method, metrics, reproduction, compute, and optimizer notes
+docs/                     data, metrics, reproduction, training, compute, and optimizer notes
 tests/                    CPU-safe sanity tests (metrics, fits, parsing, configs, artifacts)
 ```
 
@@ -90,27 +102,27 @@ bash scripts/reproduce/reproduce_main_results_from_logs.sh \
   results/processed
 ```
 
-The raw-log path normalizes the paper's legacy telemetry (`SE_post`, `PR_post`) into the public vocabulary (`soft_rank`, `hard_rank`, `spectral_entropy`). Every figure maps to its inputs, exact command, and raw-log coverage status in [`results/figure_manifest.csv`](results/figure_manifest.csv); see [`docs/release_audit.md`](docs/release_audit.md) for the reproduction tiers (figures and the main parser path reproduce from this repo; the special-family raw logs are external).
+The raw-log path normalizes the paper-run telemetry schema (`SE_post`, `PR_post`) into the public vocabulary (`soft_rank`, `hard_rank`, `spectral_entropy`). Every figure maps to its inputs, exact command, and raw-log coverage status in [`results/figure_manifest.csv`](results/figure_manifest.csv); see [`docs/reproduction.md`](docs/reproduction.md) for the reproduction tiers and release boundary.
 
 ## Train from scratch
 
-Released configs cover every experiment family. The table below gives the launch matrix at a glance; optimizer-specific hyperparameters are summarized in [`docs/optimizer_hyperparameters.md`](docs/optimizer_hyperparameters.md) and encoded in [`configs/components/optimizers/`](configs/components/optimizers/).
+Released configs cover every experiment family. Per-optimizer hyperparameters are summarized in [`docs/optimizers.md`](docs/optimizers.md) and encoded in [`configs/components/optimizers/`](configs/components/optimizers/); the configs themselves live under `configs/paper_runs/<family>/`, and full grid details (model dims, steps, token budget) are in [`docs/compute_budget.md`](docs/compute_budget.md). Every launcher lives in [`scripts/train/`](scripts/train/) and runs as `CUDA_VISIBLE_DEVICES=… bash scripts/train/<script> [optimizer]`.
 
-| Family | Model | Widths | Optimizers / variants | Heads | Steps | GPUs | Config path |
-|---|---:|---:|---|---:|---:|---:|---|
-| Main width sweep | GPT-2 160M | 1×–8× | AdamW, Muon, NorMuon, Dion r=1/2, Dion r=1/16 | 12 | 6000 | 4 | `configs/paper_runs/main_160m_width_sweep/` |
-| 350M TAIL sweep | GPT-2 350M | 1×–4× | AdamW, Muon, NorMuon, Dion r=1/16 | 32 | 8000 | 8 | `configs/paper_runs/main_350m_width_sweep/` |
-| Dion rank sweep | GPT-2 160M | 1×–8× | AdamW, Dion r=1/2, r=1/4, r=1/8, r=1/16 | 12 | 6000 | 4 | `configs/paper_runs/dion_rank_sweep/160m/` |
-| Matched-loss / extended AdamW | GPT-2 160M | 1×–8× | AdamW 6K, AdamW 12K, Dion r=1/16 | 12 | 6000 / 12000 | 4 | `configs/paper_runs/matched_loss/160m/` |
-| Architecture vs optimizer | GPT-2 160M | 1×–8× | AdamW, Muon, NorMuon, Dion r=1/2, Dion r=1/16 | 12 vs 6 | 6000 | 4 | `configs/paper_runs/architecture_vs_optimizer/160m/` |
+| Family | Scale | Optimizers | Widths | GPUs | Launch |
+|---|:--:|---|:--:|:--:|---|
+| Main width sweep | 160M | AdamW · Muon · NorMuon · Dion(1/2) · Dion(1/16) | 1×–8× | 4 | `run_width_sweep_160m.sh [opt]` |
+| Main width sweep | 350M | AdamW · Muon · NorMuon · Dion(1/16) | 1×–4× | 8 | `run_width_sweep_350m.sh [opt]` |
+| Dion rank sweep | 160M | AdamW · Dion(1/2 · 1/4 · 1/8 · 1/16) | 1×–8× | 4 | `run_dion_rank_sweep_160m.sh` |
+| Matched-loss | 160M | AdamW(6K · 12K) · Dion(1/16) | 1×–8× | 4 | `run_matched_loss_160m.sh` |
+| Architecture × optimizer | 160M | 5 optimizers × {12-head · 6-head} | 1×–8× | 4 | `run_architecture_vs_optimizer_160m.sh` |
 
-Each launcher takes an experiment-family argument, for example:
+For example, the AdamW arm of the 160M sweep on four GPUs:
 
 ```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh muon
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh adamw
 ```
 
-The full set of launchers lives in [`scripts/train/`](scripts/train/). Logs and eigen metrics are written under `outputs/` (git-ignored). The figures reproduce CPU-only in seconds.
+Logs and eigen metrics are written under `outputs/` (git-ignored); the figures themselves reproduce CPU-only in seconds.
 
 ## Data and token-frequency buckets
 
@@ -131,7 +143,7 @@ results/processed/token_frequency_stats.json
 
 ## Reproducibility notes
 
-Released configs include `seed: 1337` and an explicit `spectral_error_policy`. The paper used one run per configuration rather than multi-seed sweeps; reported scaling exponents include confidence intervals from the log–log fits, and the seed field can be varied for multi-seed reproductions when compute permits. See [`docs/reproducibility.md`](docs/reproducibility.md).
+Released configs include `seed: 1337` and an explicit `spectral_error_policy`. The paper used one run per configuration rather than multi-seed sweeps; reported scaling exponents include confidence intervals from the log–log fits, and the seed field can be varied for multi-seed reproductions when compute permits. See [`docs/reproduction.md`](docs/reproduction.md).
 
 ## Acknowledgments
 

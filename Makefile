@@ -4,6 +4,12 @@ install:
 install-metrics:
 	pip install -e ".[metrics]"
 
+install-analysis:
+	pip install -e ".[metrics,analysis]"
+
+install-train:
+	pip install -e ".[train]"
+
 test:
 	PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q tests/
 

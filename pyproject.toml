@@ -17,7 +17,7 @@ dependencies = [
 
 [project.optional-dependencies]
 metrics = ["numpy>=1.24", "torch>=2.1"]
-analysis = ["matplotlib>=3.7"]
+analysis = ["matplotlib>=3.7", "pandas>=2.0", "scipy>=1.10"]
 train = [
   "pyyaml>=6.0",
   "tqdm>=4.66",
@@ -34,6 +34,8 @@ dev = [
   "tqdm>=4.66",
   "tomli>=2.0; python_version < '3.11'",
   "matplotlib>=3.7",
+  "pandas>=2.0",
+  "scipy>=1.10",
 ]
 
 [tool.setuptools.packages.find]

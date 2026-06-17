@@ -20,7 +20,7 @@ bash scripts/train/run_single.sh configs/paper_runs/main_160m_width_sweep/adamw/
 
 ## Optimizer hyperparameters
 
-Optimizer-specific settings are centralized in [`configs/components/optimizers/`](../configs/components/optimizers/) and summarized in [`optimizer_hyperparameters.md`](optimizer_hyperparameters.md). The paper-run YAMLs compose these optimizer components with model-size, width, and telemetry settings.
+Optimizer-specific settings are centralized in [`configs/components/optimizers/`](../configs/components/optimizers/) and summarized in [`optimizers.md`](optimizers.md). The paper-run YAMLs compose these optimizer components with model-size, width, and telemetry settings.
 
 ## 160M width sweep
 

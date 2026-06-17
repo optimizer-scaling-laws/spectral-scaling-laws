@@ -1,6 +1,6 @@
 # Compute budget
 
-The full paper experiments require multi-GPU training; they are not laptop reproductions. The repository is tiered (see [`release_audit.md`](release_audit.md)) so that figures and processed results can be verified without rerunning training: every committed figure regenerates from compact CSVs **CPU-only in seconds**, while the runs below produce the underlying data.
+The full paper experiments require multi-GPU training; they are not laptop reproductions. The repository is tiered (see [`reproduction.md`](reproduction.md)) so that figures and processed results can be verified without rerunning training: every committed figure regenerates from compact CSVs **CPU-only in seconds**, while the runs below produce the underlying data.
 
 ## Models
 
