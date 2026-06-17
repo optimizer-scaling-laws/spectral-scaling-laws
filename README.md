@@ -112,7 +112,7 @@ Released configs cover every experiment family. Per-optimizer hyperparameters ar
 |---|:--:|---|:--:|:--:|---|
 | Main width sweep | 160M | AdamW · Muon · NorMuon · Dion(1/2) · Dion(1/16) | 1×–8× | 4 | `run_width_sweep_160m.sh [opt]` |
 | Main width sweep | 350M | AdamW · Muon · NorMuon · Dion(1/16) | 1×–4× | 8 | `run_width_sweep_350m.sh [opt]` |
-| Dion rank sweep | 160M | AdamW · Dion(1/2 · 1/4 · 1/8 · 1/16) | 1×–8× | 4 | `run_dion_rank_sweep_160m.sh` |
+| Dion rank sweep | 160M | AdamW · Dion(1/2, 1/4, 1/8, 1/16) | 1×–8× | 4 | `run_dion_rank_sweep_160m.sh` |
 | Matched-loss | 160M | AdamW(6K · 12K) · Dion(1/16) | 1×–8× | 4 | `run_matched_loss_160m.sh` |
 | Architecture × optimizer | 160M | 5 optimizers × {12-head · 6-head} | 1×–8× | 4 | `run_architecture_vs_optimizer_160m.sh` |
 
