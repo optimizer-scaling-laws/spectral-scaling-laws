@@ -16,6 +16,6 @@ Run-family semantics:
 - `adamw_12k`: extended AdamW run, identical to `adamw_6k` except `num_iterations: 12000`.
 - `dion_r1_16`: Dion rank `1/16` comparison run, using the Dion optimizer hyperparameters from the Dion rank-sweep configs and `num_iterations: 6000`.
 
-All configs use 4 GPUs, `eigen_log_steps: 200`, frequency-bucket telemetry, and `frequency_bucket_reduction: rank0_local` to match the submitted-run telemetry convention.
+All configs use 4 GPUs, `eigen_log_steps: 200`, frequency-bucket telemetry, and `frequency_bucket_reduction: rank0_local` to match the paper-run telemetry convention.
 
-The submitted raw logs remain external. The committed processed CSVs under `results/processed/` reproduce the committed matched-loss PDF figures.
+The paper raw logs remain external. The committed processed CSVs under `results/processed/` reproduce the committed matched-loss PDF figures.

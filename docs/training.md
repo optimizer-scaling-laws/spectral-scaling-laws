@@ -18,6 +18,10 @@ NPROC_PER_NODE=4 \
 bash scripts/train/run_single.sh configs/paper_runs/main_160m_width_sweep/adamw/1x.yaml
 ```
 
+## Optimizer hyperparameters
+
+Optimizer-specific settings are centralized in [`configs/components/optimizers/`](../configs/components/optimizers/) and summarized in [`optimizer_hyperparameters.md`](optimizer_hyperparameters.md). The paper-run YAMLs compose these optimizer components with model-size, width, and telemetry settings.
+
 ## 160M width sweep
 
 Paper runs used 4 GPUs.

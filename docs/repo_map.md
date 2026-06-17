@@ -97,4 +97,4 @@ The public launch surface is unchanged: use `torchrun ... train.py --config ...`
 
 ## Citation and project links
 
-See `docs/citation.md` for the paper, project website, repository URL, and BibTeX.
+Paper links are listed in the top-level `README.md`; BibTeX entries live in the README citation section.

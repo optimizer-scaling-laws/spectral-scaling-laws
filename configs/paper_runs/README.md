@@ -37,7 +37,7 @@ matched_loss/160m/adamw_12k/1x.yaml ... 8x.yaml
 matched_loss/160m/dion_r1_16/1x.yaml ... 8x.yaml
 ```
 
-`adamw_12k` is identical to `adamw_6k` except for `num_iterations: 12000`. `dion_r1_16` uses the Dion rank-1/16 optimizer hyperparameters and `num_iterations: 6000`. Submitted raw logs remain external, but the full launch-config grid is committed.
+`adamw_12k` is identical to `adamw_6k` except for `num_iterations: 12000`. `dion_r1_16` uses the Dion rank-1/16 optimizer hyperparameters and `num_iterations: 6000`. Paper-run raw logs remain external, but the full launch-config grid is committed.
 
 ## Architecture-vs-optimizer head-count configs
 
@@ -53,7 +53,7 @@ dion_r1_2/1x.yaml ... 8x.yaml
 dion_r1_16/1x.yaml ... 8x.yaml
 ```
 
-The 6-head configs are identical to the corresponding 12-head configs except for `n_head: 6`. Submitted raw logs remain external, but the full launch-config grid is committed.
+The 6-head configs are identical to the corresponding 12-head configs except for `n_head: 6`. Paper-run raw logs remain external, but the full launch-config grid is committed.
 
 ## Metadata fields
 

@@ -49,5 +49,4 @@ metrics = spectral_rank(
 )
 ```
 
-For public downloads, `token_frequencies.npy` is preferred. The `.pt` artifact is
-retained for compatibility with earlier training scripts.
+For public downloads, `token_frequencies.npy` is the committed artifact. Local loaders also support `.npz` and `.pt` for compatibility with older private runs, but pickle-backed artifacts are not tracked in this release.

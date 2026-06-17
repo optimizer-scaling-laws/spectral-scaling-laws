@@ -94,13 +94,23 @@ The raw-log path normalizes the paper's legacy telemetry (`SE_post`, `PR_post`) 
 
 ## Train from scratch
 
-Released configs cover every experiment: the 40-run 160M width sweep, the 16-run 350M width sweep, the 40-run 160M Dion rank sweep, the 24-run matched-loss grid, and the 80-run 12-head vs. 6-head architecture-vs-optimizer grid. Each launcher takes the optimizer as an argument, e.g.:
+Released configs cover every experiment family. The table below gives the launch matrix at a glance; optimizer-specific hyperparameters are summarized in [`docs/optimizer_hyperparameters.md`](docs/optimizer_hyperparameters.md) and encoded in [`configs/components/optimizers/`](configs/components/optimizers/).
+
+| Family | Model | Widths | Optimizers / variants | Heads | Steps | GPUs | Config path |
+|---|---:|---:|---|---:|---:|---:|---|
+| Main width sweep | GPT-2 160M | 1×–8× | AdamW, Muon, NorMuon, Dion r=1/2, Dion r=1/16 | 12 | 6000 | 4 | `configs/paper_runs/main_160m_width_sweep/` |
+| 350M TAIL sweep | GPT-2 350M | 1×–4× | AdamW, Muon, NorMuon, Dion r=1/16 | 32 | 8000 | 8 | `configs/paper_runs/main_350m_width_sweep/` |
+| Dion rank sweep | GPT-2 160M | 1×–8× | AdamW, Dion r=1/2, r=1/4, r=1/8, r=1/16 | 12 | 6000 | 4 | `configs/paper_runs/dion_rank_sweep/160m/` |
+| Matched-loss / extended AdamW | GPT-2 160M | 1×–8× | AdamW 6K, AdamW 12K, Dion r=1/16 | 12 | 6000 / 12000 | 4 | `configs/paper_runs/matched_loss/160m/` |
+| Architecture vs optimizer | GPT-2 160M | 1×–8× | AdamW, Muon, NorMuon, Dion r=1/2, Dion r=1/16 | 12 vs 6 | 6000 | 4 | `configs/paper_runs/architecture_vs_optimizer/160m/` |
+
+Each launcher takes an experiment-family argument, for example:
 
 ```bash
 CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh muon
 ```
 
-The full set of launchers (single runs, the 350M and Dion sweeps, matched-loss, and architecture-vs-optimizer grids) lives in [`scripts/train/`](scripts/train/). Logs and eigen metrics are written under `outputs/` (git-ignored). The 160M sweeps run on 4 GPUs and the 350M sweep on 8; the figures reproduce CPU-only in seconds.
+The full set of launchers lives in [`scripts/train/`](scripts/train/). Logs and eigen metrics are written under `outputs/` (git-ignored). The figures reproduce CPU-only in seconds.
 
 ## Data and token-frequency buckets
 

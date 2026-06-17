@@ -2,7 +2,7 @@
 """Parse raw eigen telemetry logs into a normalized layer-metrics CSV.
 
 Input is a run manifest CSV. Each row describes one training run and points to
-its ``eigen_metrics_logs`` directory. The parser supports both submitted-run
+its ``eigen_metrics_logs`` directory. The parser supports both paper-run
 legacy logs (SE/PR names) and logs emitted by the cleaned public tracker.
 """
 
@@ -47,7 +47,7 @@ def main() -> None:
     parser.add_argument(
         "--require-all-buckets-per-step",
         action="store_true",
-        help="Match the submitted plotting scripts by keeping a frequency step only if HEAD/MID/TAIL all appear.",
+        help="Match the legacy plotting scripts by keeping a frequency step only if HEAD/MID/TAIL all appear.",
     )
     args = parser.parse_args()
 

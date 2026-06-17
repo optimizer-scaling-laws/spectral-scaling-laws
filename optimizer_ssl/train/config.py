@@ -222,7 +222,7 @@ def parse_cli_args() -> argparse.Namespace:
         choices=["rank0_local", "distributed_covariance"],
         help=(
             "How to reduce HEAD/MID/TAIL bucket metrics across data-parallel ranks. "
-            "rank0_local reproduces the submitted paper; distributed_covariance "
+            "rank0_local reproduces the paper; distributed_covariance "
             "globally reduces bucket covariance statistics."
         ),
     )

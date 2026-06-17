@@ -62,7 +62,7 @@ def aggregate_final_window_points(
 ) -> list[dict[str, Any]]:
     """Aggregate layer-step rows into one scaling point per run/bucket/metric.
 
-    This mirrors the submitted plotting scripts:
+    This mirrors the legacy plotting scripts:
 
     1. choose the last ``final_samples`` checkpoints for each layer;
     2. take the median over those checkpoints for each layer;

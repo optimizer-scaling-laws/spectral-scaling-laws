@@ -1,5 +1,5 @@
 {
-  "root": "external://submitted_logs/dion_rank_sweep",
+  "root": "external://paper_run_logs/dion_rank_sweep",
   "out_dir": "results/processed",
   "n_runs": 40,
   "n_layer_rows": 29758,
@@ -25,7 +25,7 @@
   ],
   "final_samples": 5,
   "bucket": "tail",
-  "source": "submitted-run processed artifacts generated from external raw logs",
+  "source": "processed artifacts generated from external paper-run logs generated from external raw logs",
   "included_in_repository": [
     "dion_rank_sweep_run_metadata.csv",
     "dion_tail_rank_sweep_points.csv",

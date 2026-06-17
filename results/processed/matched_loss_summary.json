@@ -1,5 +1,5 @@
 {
-  "root": "external://submitted_logs/matched_loss",
+  "root": "external://paper_run_logs/matched_loss",
   "out_dir": "results/processed",
   "n_runs": 24,
   "n_layer_rows": 70830,

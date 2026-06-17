@@ -37,4 +37,4 @@ track_by_frequency: true
 frequency_bucket_reduction: rank0_local
 ```
 
-The committed figure is regenerated from processed beta values in `results/processed/architecture_vs_optimizer_*.csv`. These configs provide the historical launch grid; submitted raw logs remain external.
+The committed figure is regenerated from processed beta values in `results/processed/architecture_vs_optimizer_*.csv`. These configs provide the historical launch grid; paper raw logs remain external.

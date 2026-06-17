@@ -1,5 +1,5 @@
 {
-  "root": "external://submitted_logs/tail_350m_rank_scaling",
+  "root": "external://paper_run_logs/tail_350m_rank_scaling",
   "out_dir": "results/processed",
   "n_runs": 16,
   "n_layer_rows": 16128,
@@ -20,7 +20,7 @@
   "final_samples": 5,
   "bucket": "tail",
   "model_scale": "350m",
-  "source": "submitted-run processed artifacts generated from external raw logs",
+  "source": "processed artifacts generated from external paper-run logs generated from external raw logs",
   "included_in_repository": [
     "tail_350m_run_metadata.csv",
     "tail_350m_rank_scaling_points.csv",

@@ -1,8 +1,8 @@
-"""Parsers for submitted-run and released spectral telemetry logs.
+"""Parsers for paper-run and released spectral telemetry logs.
 
 The public processed-data pipeline converts text logs into a normalized CSV
 schema before any aggregation or plotting.  This file handles both old
-submitted-run logs (``SE_post``/``PR_post``) and logs emitted by the cleaned
+paper-run logs (``SE_post``/``PR_post``) and logs emitted by the cleaned
 public tracker (``soft_rank_post``/``hard_rank_post``).
 """
 
@@ -109,9 +109,9 @@ def parse_frequency_layer_file(
 ) -> list[dict[str, Any]]:
     """Parse one ``layer_<n>_eigen_freq.txt`` frequency-bucket log file.
 
-    The submitted plotting scripts only accepted a step if HEAD/MID/TAIL were all
+    The legacy plotting scripts only accepted a step if HEAD/MID/TAIL were all
     present.  The default here keeps every parsed bucket row; callers that need
-    exact submitted-script behavior can set ``require_all_buckets_per_step=True``.
+    exact paper-run script behavior can set ``require_all_buckets_per_step=True``.
     """
     path = Path(path)
     if not path.exists():

@@ -81,7 +81,7 @@ class GPTEigenMetricsTracker:
             token_freq_file: Path to precomputed token frequencies (.pt file)
             token_freq_table: Pre-initialized TokenFrequencyTable (alternative to file)
             min_samples_per_bucket: Minimum samples required to compute bucket metrics
-            frequency_bucket_reduction: ``rank0_local`` reproduces the submitted-paper bucket telemetry;
+            frequency_bucket_reduction: ``rank0_local`` reproduces the paper bucket telemetry;
                 ``distributed_covariance`` reduces bucket covariance statistics across ranks.
             error_policy: ``warn`` logs explicit missing markers and continues, ``raise`` fails fast,
                 and ``nan`` writes missing/NaN markers where possible.
@@ -780,7 +780,7 @@ class GPTEigenMetricsTracker:
         """Compute HEAD/MID/TAIL metrics from each rank's local shard.
 
         Only rank 0 writes its local bucket metrics. This reproduces the
-        submitted-paper telemetry path for frequency-bucketed spectra.
+        paper telemetry path for frequency-bucketed spectra.
         """
         if not self.track_by_frequency or not self.token_ids_buffer:
             return

@@ -28,7 +28,7 @@ track_by_frequency: true
 frequency_bucket_reduction: rank0_local
 ```
 
-`rank0_local` reproduces the submitted-paper bucket telemetry. The code also supports `distributed_covariance` for new experiments that should reduce HEAD/MID/TAIL covariance statistics across all data-parallel ranks before computing soft/hard ranks.
+`rank0_local` reproduces the paper bucket telemetry. The code also supports `distributed_covariance` for new experiments that should reduce HEAD/MID/TAIL covariance statistics across all data-parallel ranks before computing soft/hard ranks.
 
 
 ## Cleanup rules

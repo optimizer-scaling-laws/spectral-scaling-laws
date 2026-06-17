@@ -1,33 +1,18 @@
 # Reproduction scripts
 
-## From processed CSVs
+These wrappers are the script-level entrypoints behind `make figures` and the raw-log parser path.
 
-Regenerate all committed PDF figures, including the main 160M rank-scaling figures, Dion TAIL-token rank sweep, matched-loss figures, GPT2-350M TAIL plots, and architecture-vs-optimizer comparison:
+## Processed CSVs → committed PDFs
 
 ```bash
 make figures
 ```
 
-or directly:
+Focused wrappers are available for individual figure families: Dion rank sweep, matched loss, GPT2-350M TAIL, and architecture-vs-optimizer.
 
-```bash
-bash scripts/reproduce/reproduce_main_results_from_processed.sh \
-  results/processed \
-  results/figures
-```
+## Raw logs → main 160M processed CSVs
 
-Focused wrappers:
-
-```bash
-bash scripts/reproduce/reproduce_dion_rank_sweep.sh results/processed results/figures
-bash scripts/reproduce/reproduce_matched_loss.sh results/processed results/figures
-bash scripts/reproduce/reproduce_350m_tail.sh results/processed results/figures
-bash scripts/reproduce/reproduce_architecture_vs_optimizer.sh results/processed results/figures
-```
-
-## From raw logs
-
-After downloading the external raw logs and creating a run manifest:
+After downloading external raw logs and creating `results/processed/run_metadata.csv` from the template:
 
 ```bash
 bash scripts/reproduce/reproduce_main_results_from_logs.sh \
@@ -35,6 +20,4 @@ bash scripts/reproduce/reproduce_main_results_from_logs.sh \
   results/processed
 ```
 
-This raw-log wrapper covers the main parser/aggregation path. Full raw logs should be distributed as external artifacts. The repository keeps small sample logs only for parser tests and examples.
-
-For figure-by-figure status, see `results/figure_manifest.csv`.
+This raw-log wrapper covers the main parser/aggregation path. The repository keeps small sample logs only for parser tests and examples. For figure-by-figure status, see `results/figure_manifest.csv`.

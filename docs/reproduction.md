@@ -1,6 +1,6 @@
 # Reproduction
 
-This repo supports several reproduction levels. The most complete in-repo path is **processed-CSV figure reproduction**: every committed PDF under `results/figures/` can be regenerated from committed CSVs under `results/processed/`.
+This repo supports several reproduction levels. The most complete in-repo path is **processed-CSV figure reproduction**: every committed PDF under `results/figures/` can be regenerated from committed artifacts under `results/processed/`.
 
 ## Reproduction tiers
 
@@ -8,16 +8,14 @@ This repo supports several reproduction levels. The most complete in-repo path i
 |---|---|---|
 | Tiny smoke test | CPU/GPU sanity checks for code paths | No |
 | Token buckets | Inspect or recompute token-frequency buckets | FineWeb10B only if recomputing |
-| Training launches | Launch new 160M/350M-style runs | Training compute and data |
+| Training launches | Launch new 160M/350M-style runs from frozen configs | Training compute and data |
 | Processed-CSV figures | Regenerate all committed PDFs | No |
 | Raw-log parser path | Rebuild main 160M processed CSVs from `eigen_metrics_logs/` | Yes, external raw logs |
 | Special figure raw provenance | Dion rank sweep, matched-loss, 350M TAIL, architecture-vs-optimizer | Yes, external raw logs; processed CSVs and full launch-config grids are committed |
 
 The figure-by-figure source of truth is `results/figure_manifest.csv`.
 
-## Tier -1: tiny GPU smoke test
-
-This verifies the local training/dataloader/eigen-telemetry path without downloading FineWeb10B or running paper-scale models.
+## Tiny smoke test
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 bash scripts/train/train_tiny_debug.sh
@@ -25,131 +23,41 @@ CUDA_VISIBLE_DEVICES=0 bash scripts/train/train_tiny_debug.sh
 
 This creates synthetic headered shards under `data/tiny_debug/` and runs a 2-layer GPT for 10 steps. It is not a paper-scale experiment.
 
-## Tier 0: inspect released token-frequency buckets
+## Token-frequency buckets
+
+Inspect the released bucket artifact without raw FineWeb shards:
 
 ```bash
 python -m pytest tests/test_token_frequency_buckets.py
 ```
 
-This uses the released `results/processed/token_frequencies.npy` artifact and does not require raw FineWeb shards.
-
-## Tier 1: download FineWeb10B and recompute token-frequency buckets
-
-Full paper setting:
+Recompute buckets from FineWeb10B if the raw shards are available:
 
 ```bash
 bash scripts/preprocess/prepare_fineweb10b_token_buckets.sh
 ```
 
-Smoke-test setting:
+For manual download, audit commands, and the shard format, see [`docs/data.md`](data.md).
 
-```bash
-NUM_TRAIN_SHARDS=2 bash scripts/preprocess/prepare_fineweb10b_token_buckets.sh
-```
+## Training launches
 
-Equivalent manual commands:
-
-```bash
-python scripts/preprocess/download_fineweb10b.py \
-  --output_dir data/fineweb10B \
-  --num_train_shards 103
-
-python scripts/preprocess/compute_token_frequencies.py \
-  --data_dir data/fineweb10B \
-  --output results/processed/token_frequencies.npy \
-  --json_out results/processed/token_frequency_stats.json
-
-python scripts/validation/audit_token_frequency_buckets.py \
-  --freq_file results/processed/token_frequencies.npy \
-  --data_dir data/fineweb10B \
-  --format headered \
-  --json_out results/processed/token_frequency_audit.json
-```
-
-## Tier 2: launch training runs
-
-The paper used DDP-style launches with 4 GPUs for 160M-family runs and 8 GPUs for 350M-family runs.
-
-Single 160M example:
+Frozen launch-config grids cover all paper experiment families. The training scripts write outputs under `outputs/`, which is ignored by Git. A single 160M example is:
 
 ```bash
 CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/train_160m_example.sh
 ```
 
-160M width sweep for one optimizer:
+For full width sweeps, Dion rank sweeps, matched-loss runs, architecture-vs-optimizer runs, and the 350M launcher, see [`docs/training.md`](training.md).
 
-```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh adamw
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh muon
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh normuon
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh dion_r1_2
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh dion_r1_16
-```
-
-350M width sweep for one optimizer:
-
-```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 bash scripts/train/run_width_sweep_350m.sh adamw
-```
-
-Full Dion rank-fraction config grid, including AdamW baseline:
-
-```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_dion_rank_sweep_160m.sh
-```
-
-Full matched-loss / extended-AdamW config grid:
-
-```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_matched_loss_160m.sh
-```
-
-All outputs are written under `outputs/`, which is ignored by Git.
-
-## Tier 3: reproduce all committed figures from processed CSVs
-
-Regenerate the included PDFs with:
+## Regenerate committed PDFs from processed CSVs
 
 ```bash
 make figures
 ```
 
-or directly:
+This calls the wrappers in `scripts/reproduce/` and regenerates all committed PDF figures under `results/figures/`. Only PDF figures are tracked; PNG previews are intentionally omitted. The exact processed inputs and command for each figure are listed in `results/figure_manifest.csv`.
 
-```bash
-bash scripts/reproduce/reproduce_main_results_from_processed.sh \
-  results/processed \
-  results/figures
-```
-
-This produces:
-
-```text
-results/figures/global_hard_rank_scaling.pdf
-results/figures/global_soft_rank_scaling.pdf
-results/figures/frequency_bucket_rank_grid.pdf
-results/figures/dion_tail_hard_rank_sweep.pdf
-results/figures/dion_tail_soft_rank_sweep.pdf
-results/figures/matched_loss_scaling_breakdown.pdf
-results/figures/matched_loss_beta_dynamics.pdf
-results/figures/matched_loss_pr_trajectories_by_width.pdf
-results/figures/tail_350m_hard_rank_scaling.pdf
-results/figures/tail_350m_soft_rank_scaling.pdf
-results/figures/architecture_vs_optimizer.pdf
-```
-
-Focused wrappers are also available:
-
-```bash
-bash scripts/reproduce/reproduce_dion_rank_sweep.sh results/processed results/figures
-bash scripts/reproduce/reproduce_matched_loss.sh results/processed results/figures
-bash scripts/reproduce/reproduce_350m_tail.sh results/processed results/figures
-bash scripts/reproduce/reproduce_architecture_vs_optimizer.sh results/processed results/figures
-```
-
-Only PDF figures are tracked.
-
-## Tier 4: rebuild main processed CSVs from raw logs
+## Rebuild main processed CSVs from raw logs
 
 The paper's full raw logs are external artifacts. After downloading them, create a manifest from `results/processed/run_metadata_template.csv` and run:
 

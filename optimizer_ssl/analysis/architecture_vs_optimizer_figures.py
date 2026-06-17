@@ -79,7 +79,7 @@ def save_architecture_vs_optimizer_figure(
 
     setup_matplotlib_style()
 
-    # Preserve the original submitted plot's row order: soft on top, hard below.
+    # Preserve the original paper-run plot's row order: soft on top, hard below.
     row_values: dict[str, list[float]] = {metric: [] for metric in METRIC_ORDER}
     for metric in METRIC_ORDER:
         for bucket in BUCKET_ORDER:

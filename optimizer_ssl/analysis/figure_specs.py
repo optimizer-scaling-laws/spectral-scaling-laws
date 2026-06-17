@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 # Public processed artifacts and launch configs use one canonical Dion naming
-# scheme: dion_r1_2, dion_r1_4, dion_r1_8, dion_r1_16. Legacy submitted-log
+# scheme: dion_r1_2, dion_r1_4, dion_r1_8, dion_r1_16. Legacy paper-run log
 # folder aliases are intentionally not part of the public figure orders.
 OPTIMIZER_DISPLAY_NAMES: dict[str, str] = {
     "adamw": "AdamW",
@@ -52,7 +52,7 @@ DION_RANK_SWEEP_COLORS: dict[str, str] = {
 }
 
 # The GPT2-350M TAIL-only paper figure uses a compact four-optimizer
-# palette from the submitted plotting script.
+# palette from the legacy plotting script.
 TAIL_350M_OPTIMIZER_ORDER: tuple[str, ...] = (
     "adamw",
     "muon",

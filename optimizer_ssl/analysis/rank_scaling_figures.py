@@ -428,7 +428,7 @@ def save_dion_rank_sweep_figures(
 ) -> list[Path]:
     """Create TAIL-token Dion rank-sweep soft/hard rank scaling figures.
 
-    The submitted paper's Dion-rank sweep figure compares AdamW as a dashed
+    The paper's Dion-rank sweep figure compares AdamW as a dashed
     baseline against Dion rank fractions r=1/2, 1/4, 1/8, and 1/16. The figure
     uses only TAIL-token bucket metrics, with the same final-window/layer-median
     aggregation used by the main rank-scaling figures.
@@ -564,7 +564,7 @@ def save_dion_rank_sweep_figures(
 
 
 def _setup_tail_350m_axes(ax: plt.Axes, d_values: list[float], y_values: list[float]) -> None:
-    """Axis setup matching the submitted GPT2-350M TAIL plotting script."""
+    """Axis setup matching the paper GPT2-350M TAIL plotting script."""
     if not d_values:
         return
     ax.set_xscale("log")
@@ -600,7 +600,7 @@ def save_tail_350m_rank_figures(
 ) -> list[Path]:
     """Create GPT2-350M TAIL-token hard/soft rank scaling figures.
 
-    The submitted paper's GPT2-350M confirmation figure uses only TAIL-token
+    The paper's GPT2-350M confirmation figure uses only TAIL-token
     frequency-bucket metrics, four width points (1x--4x), and four optimizers:
     AdamW, Muon, NorMuon, and Dion r=1/16. The aggregation and beta fitting are
     the same final-window/layer-median pipeline used by the 160M figures.

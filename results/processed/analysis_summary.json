@@ -23,7 +23,7 @@
     "normuon"
   ],
   "final_samples": 5,
-  "source": "submitted-run processed artifacts generated from external raw logs",
+  "source": "processed artifacts generated from external paper-run logs generated from external raw logs",
   "included_in_repository": [
     "run_metadata.csv",
     "global_rank_scaling_points.csv",

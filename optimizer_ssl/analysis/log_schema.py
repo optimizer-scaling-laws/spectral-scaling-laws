@@ -1,6 +1,6 @@
-"""Log-schema normalization helpers for submitted and released telemetry logs.
+"""Log-schema normalization helpers for legacy and released telemetry logs.
 
-The submitted-run logs used short legacy names such as ``SE_post`` and
+The paper-run logs used short legacy names such as ``SE_post`` and
 ``PR_post`` and also contained legacy diagnostics (``EEE``/``JS``) that are not
 part of the public metric vocabulary.  The released code uses explicit names:
 ``spectral_entropy_*``, ``soft_rank_*``, and ``hard_rank_*``.
@@ -53,7 +53,7 @@ def parse_layer_metric_line(line: str) -> dict[str, Any] | None:
     """Parse one global layer-metric log line and normalize metric names.
 
     Supports both the released schema (``soft_rank_pre``, ``hard_rank_pre``, ...)
-    and the submitted-run legacy schema (``SE_pre``, ``PR_pre``, plus EEE/JS).
+    and the paper-run legacy schema (``SE_pre``, ``PR_pre``, plus EEE/JS).
     """
     step_match = _STEP_RE.search(line)
     if not step_match:
