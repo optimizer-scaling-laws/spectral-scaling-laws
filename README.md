@@ -151,7 +151,7 @@ The GPT training stack and data loader derive from [modded-nanoGPT](https://gith
 
 ## Citation
 
-If you use this code or its findings, please cite this paper:
+If you find this code or insights useful, please consider citing this paper:
 
 ```bibtex
 @article{jha2026optimizer,
@@ -162,7 +162,7 @@ If you use this code or its findings, please cite this paper:
 }
 ```
 
-The spectral scaling-laws framework was introduced in our earlier work (EMNLP 2025), which you may also wish to cite:
+The original spectral scaling-laws was introduced in our earlier work (EMNLP 2025):
 
 ```bibtex
 @inproceedings{jha2025spectral,
