@@ -42,11 +42,11 @@ make figures      # writes all figures to results/figures/
 
 | Extra | Command | For |
 |---|---|---|
-| `metrics` | `pip install -e ".[metrics]"` | CPU spectral diagnostics (NumPy + PyTorch) |
+| `metrics` | `pip install -e ".[metrics]"` | CPU diagnostics (NumPy + PyTorch) |
 | `analysis` | `pip install -e ".[analysis]"` | figure scripts and the Colab notebook path |
-| `train` | `pip install -e ".[train]"` | training stack (configs, WandB, HF cache, Triton) |
-| `dev` | `pip install -e ".[dev]"` | tests, linting, and release checks |
-| `metrics,analysis` | `pip install -e ".[metrics,analysis]"` | figure reproduction without training deps |
+| `train` | `pip install -e ".[train]"` | training configurations |
+| `dev` | `pip install -e ".[dev]"` | tests |
+| `metrics,analysis` | `pip install -e ".[metrics,analysis]"` | figure reproduction without training runs|
 
 ## Run the diagnostic on your own model
 
