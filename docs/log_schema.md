@@ -11,7 +11,7 @@ spectral_entropy_pre
 spectral_entropy_post
 ```
 
-Historical submitted-run logs may use the older schema inherited from earlier
+Historical the paper's raw logs may use the older schema inherited from earlier
 projects:
 
 ```text

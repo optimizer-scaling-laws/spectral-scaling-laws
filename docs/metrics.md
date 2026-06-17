@@ -33,7 +33,7 @@ Pooled all-token spectral metrics are computed from globally reduced covariance 
 frequency_bucket_reduction: rank0_local
 ```
 
-This is the submitted-paper compatibility mode. It computes bucketed metrics from the rank-0 local shard at each logging step and is used by all frozen paper-run configs. This preserves exact compatibility with the submitted experiments.
+This is the paper's compatibility mode. It computes bucketed metrics from the rank-0 local shard at each logging step and is used by all frozen paper-run configs. This preserves exact compatibility with the paper's experiments.
 
 ```yaml
 frequency_bucket_reduction: distributed_covariance

@@ -1,158 +1,88 @@
-# Optimizer-Induced Spectral Scaling Laws
+# Same Architecture, Different Capacity: Optimizer-Induced Spectral Scaling Laws
 
 [![CI](https://github.com/optimizer-scaling-laws/spectral-scaling-laws/actions/workflows/ci.yml/badge.svg)](https://github.com/optimizer-scaling-laws/spectral-scaling-laws/actions/workflows/ci.yml)
 [![arXiv](https://img.shields.io/badge/arXiv-2605.21803-b31b1b.svg)](https://arxiv.org/abs/2605.21803)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Code, configs, and lightweight reproducibility artifacts for **Same Architecture, Different Capacity: Optimizer-Induced Spectral Scaling Laws**.
+Code and reproducible artifacts for our paper **[Same Architecture, Different Capacity: Optimizer-Induced Spectral Scaling Laws](https://arxiv.org/abs/2605.21803)** — Nandan Kumar Jha and Brandon Reagen.
+[📄 Paper](https://arxiv.org/abs/2605.21803) · [🌐 Project page](https://optimizer-scaling-laws.github.io/) · [▶️ Reproduce in Colab](https://colab.research.google.com/github/optimizer-scaling-laws/spectral-scaling-laws/blob/main/notebooks/reproduce_main_figures.ipynb)
 
-- Paper: https://arxiv.org/abs/2605.21803
-- Project website: https://optimizer-scaling-laws.github.io/
-- Repository: https://github.com/optimizer-scaling-laws/spectral-scaling-laws
-- Authors: Nandan Kumar Jha and Brandon Reagen
+<p align="center">
+  <img src="assets/teaser.png" width="900" alt="Spectral scaling exponents depend on optimizer choice (soft and hard spectral rank vs FFN width)"><br>
+  <em><strong>Figure 1.</strong> Spectral scaling exponents depend on optimizer choice: soft (left) and hard (right) spectral rank as a function of FFN width in GPT-2 160M. AdamW exhibits the largest hard–soft asymmetry (Δ = β<sub>soft</sub> − β<sub>hard</sub> = 0.37), indicating concentrated eigenspectra. Muon and Dion (1/2) reduce this asymmetry to Δ ≈ 0.14. Moreover, hard-rank scaling exhibits stronger dependence on optimizer choice.</em>
+</p>
 
-This repository studies how optimizer geometry changes the realized representation capacity of language models. The central observation is that models with the same architecture and comparable pretraining loss can exhibit different spectral scaling behavior in their FFN representations.
+## TL;DR
 
-## What is included
+**Same architecture, different optimizer, different capacity.** Realized representation capacity is not architecture-only — it emerges from the architecture–optimizer interaction. Holding the Transformer architecture and width schedule fixed, different optimizers turn added FFN width into usable capacity at different rates, changing the *scaling exponents* of the FFN representation spectrum. The separation is sharpest in **hard** spectral rank: globally, AdamW scales at **β ≈ 0.29** while Muon and NorMuon reach **β ≈ 0.80**, even though soft rank grows with width across all optimizers. On rare (TAIL) tokens the gap widens further — AdamW **β ≈ 0.44** vs. Muon **β ≈ 1.02**, a **2.3× larger exponent**. These optimizer-induced shifts **exceed** architectural interventions (attention rank, positional encoding), and **matched pretraining loss does not imply matched representation geometry**.
 
-- GPT training stack adapted from the Dion codebase.
-- Vendored Muon/NorMuon/Dion optimizer support through `third_party/dion/`.
-- Spectral telemetry for covariance spectra, soft rank, hard rank/participation ratio, spectral asymmetry, and HEAD/MID/TAIL frequency-bucketed metrics.
-- FineWeb10B download and token-frequency preprocessing utilities.
-- Released `results/processed/token_frequencies.npy` token-frequency artifact for reproducible token-frequency buckets.
-- Full launch-config grids for the 40-run 160M width sweep, the 16-run 350M width sweep, the 40-run 160M Dion rank sweep, the 24-run matched-loss grid, and the 80-run 12-head vs 6-head architecture-vs-optimizer grid.
-- Shell scripts for downloading data, recomputing frequency buckets, and launching training runs.
-- Lightweight tests for spectral metrics, standalone diagnostics, power-law fitting, config loading, token buckets, and raw-log analysis parsing.
-- Analysis scripts that parse submitted-run spectral logs into normalized CSVs, aggregate rank-scaling beta tables, and regenerate all committed PDF figures from processed CSVs.
-- `results/figure_manifest.csv`, an audit table mapping each figure to its processed inputs, reproduction command, and raw-log coverage status.
+## Reproduce the headline result in 60 seconds
 
-## Repository map
-
-```text
-configs/                  paper-run configs and reusable config components
-optimizer_ssl/            paper-specific training, spectra, scaling, and utility code
-third_party/dion/         vendored Dion/Muon/NorMuon optimizer implementation
-scripts/preprocess/       FineWeb10B download and token-frequency preprocessing
-scripts/train/            single-run and sweep launch scripts
-scripts/validation/       token-frequency audit scripts
-scripts/analysis/         raw-log parsing and rank-scaling aggregation
-scripts/reproduce/        one-command processed-data reproduction wrappers
-results/processed/        lightweight released artifacts and generated CSVs
-results/figures/          publication-quality PDF figures only
-results/figure_manifest.csv figure provenance and reproduction status
-examples/                 CPU-safe standalone diagnostic examples
-.github/workflows/        CPU-safe CI checks
-docs/                     method, metrics, reproduction, compute, optimizer notes
-tests/                    lightweight sanity tests
-```
-
-## Quickstart
-
-```bash
-pip install -e ".[dev]"
-pytest tests/
-```
-
-For CPU-only spectral diagnostics without the training stack:
-
-```bash
-pip install -e ".[metrics]"
-python examples/probe_synthetic_activations.py
-```
-
-
-## One-minute notebook reproduction
-
-Run the headline 160M spectral-scaling analysis directly in Colab, using only the committed processed CSVs:
+No GPU, no training, no raw logs. The Colab notebook refits the scaling exponents and regenerates the main figures directly from the committed processed CSVs:
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/optimizer-scaling-laws/spectral-scaling-laws/blob/main/notebooks/reproduce_main_figures.ipynb)
 
-The notebook regenerates the global hard/soft scaling view, the HEAD/MID/TAIL frequency-bucket grid, and the live beta table without training, checkpoints, raw logs, or a GPU.
-
-## Data and token-frequency buckets
-
-The raw FineWeb10B token shards are not committed. To download the full pretokenized FineWeb10B cache and recompute the released frequency table:
+To regenerate every committed PDF figure locally:
 
 ```bash
-bash scripts/preprocess/prepare_fineweb10b_token_buckets.sh
+pip install -e ".[dev]"
+make figures      # writes all figures to results/figures/
 ```
 
-For a smoke test with two train shards:
+## Installation
 
 ```bash
-NUM_TRAIN_SHARDS=2 bash scripts/preprocess/prepare_fineweb10b_token_buckets.sh
+pip install -e ".[dev]"        # full stack + tests
+pip install -e ".[metrics]"    # just the spectral diagnostics (NumPy + PyTorch, CPU-friendly)
 ```
 
-The repository also includes the small released artifact:
+## Run the diagnostic on your own model
+
+The spectral-rank metrics are not tied to this training stack — point them at any model's FFN activations to measure the spectral capacity *your* optimizer is realizing:
+
+```python
+from optimizer_ssl.probe import spectral_rank
+
+metrics = spectral_rank(activations)          # soft rank, hard rank, spectral entropy
+# pass token_freq=... to split HEAD / MID / TAIL
+```
+
+See [`docs/diagnostic_api.md`](docs/diagnostic_api.md) and runnable CPU examples in [`examples/`](examples/).
+
+## What's in here
 
 ```text
-results/processed/token_frequencies.npy
-results/processed/token_frequency_stats.json
+optimizer_ssl/            training stack, spectral telemetry, scaling fits, and the standalone diagnostic
+  ├── spectra/            covariance spectra, soft/hard rank, frequency-bucketed (HEAD/MID/TAIL) metrics
+  ├── analysis/           log parsing, rank aggregation, power-law fits with confidence intervals
+  └── probe.py            model-agnostic spectral-rank diagnostic
+configs/                  full launch-config grids for every paper experiment (+ reusable components)
+scripts/
+  ├── train/              single-run and sweep launchers
+  ├── analysis/           raw-log → normalized CSV → rank-scaling beta tables
+  ├── reproduce/          one-command figure reproduction wrappers
+  └── preprocess/         FineWeb10B download and token-frequency preprocessing
+results/
+  ├── processed/          lightweight released CSVs + token_frequencies.npy
+  ├── figures/            publication-quality PDF figures
+  └── figure_manifest.csv per-figure provenance: inputs, command, raw-log coverage
+notebooks/                Colab-ready headline reproduction
+third_party/dion/         vendored Dion / Muon / NorMuon implementations (upstream notices preserved)
+docs/                     method, metrics, reproduction, compute, and optimizer notes
+tests/                    CPU-safe sanity tests (metrics, fits, parsing, configs, artifacts)
 ```
 
-which is sufficient for HEAD/MID/TAIL bucket assignment without downloading FineWeb10B.
+## Reproduce the figures
 
-## Training launch examples
-
-Run one 160M example on 4 GPUs:
-
-```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/train_160m_example.sh
-```
-
-Run the full 160M width sweep for one optimizer on 4 GPUs:
-
-```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh adamw
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh muon
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh normuon
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh dion_r1_2
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh dion_r1_16
-```
-
-Run the full 350M width sweep for one optimizer on 8 GPUs:
-
-```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 bash scripts/train/run_width_sweep_350m.sh adamw
-```
-
-Run the full Dion rank sweep at 160M on 4 GPUs:
-
-```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_dion_rank_sweep_160m.sh
-```
-
-Run the matched-loss / extended-AdamW grid at 160M on 4 GPUs:
-
-```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_matched_loss_160m.sh
-```
-
-Run the 12-head vs 6-head architecture-vs-optimizer grid at 160M on 4 GPUs:
-
-```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_architecture_vs_optimizer_160m.sh
-```
-
-Logs and eigen metrics are written under `outputs/`, which is ignored by Git.
-
-## Reproduce main rank-scaling figures
-
-The repository includes processed CSVs for the submitted-run figure families: 160M global soft/hard scaling, HEAD/MID/TAIL bucket panels, the Dion TAIL-token rank sweep, the matched-loss / extended-AdamW scaling-breakdown family, the GPT2-350M TAIL-token confirmation plots, and the architecture-vs-optimizer comparison. Regenerate all committed PDFs with:
+All figure families ship with their processed CSVs, so every committed PDF regenerates without training:
 
 ```bash
 make figures
+# equivalently:
+bash scripts/reproduce/reproduce_main_results_from_processed.sh results/processed results/figures
 ```
 
-or directly with:
-
-```bash
-bash scripts/reproduce/reproduce_main_results_from_processed.sh \
-  results/processed \
-  results/figures
-```
-
-To rebuild the main 160M processed CSVs from external raw logs, prepare a run manifest from `results/processed/run_metadata_template.csv`, then run:
+To rebuild the 160M processed CSVs from external raw logs, fill in a run manifest based on `results/processed/run_metadata_template.csv`, then:
 
 ```bash
 bash scripts/reproduce/reproduce_main_results_from_logs.sh \
@@ -160,42 +90,63 @@ bash scripts/reproduce/reproduce_main_results_from_logs.sh \
   results/processed
 ```
 
-The raw-log path normalizes submitted-run legacy telemetry (`SE_post`, `PR_post`) into the public vocabulary (`soft_rank`, `hard_rank`, `spectral_entropy`). All committed figure families now have full launch-config grid coverage; submitted raw logs for the special figure families remain external unless supplied separately. See `results/figure_manifest.csv` and `docs/release_audit.md`.
+The raw-log path normalizes the paper's legacy telemetry (`SE_post`, `PR_post`) into the public vocabulary (`soft_rank`, `hard_rank`, `spectral_entropy`). Every figure maps to its inputs, exact command, and raw-log coverage status in [`results/figure_manifest.csv`](results/figure_manifest.csv); see [`docs/release_audit.md`](docs/release_audit.md) for the reproduction tiers (figures and the main parser path reproduce from this repo; the special-family raw logs are external).
+
+## Train from scratch
+
+Released configs cover every experiment: the 40-run 160M width sweep, the 16-run 350M width sweep, the 40-run 160M Dion rank sweep, the 24-run matched-loss grid, and the 80-run 12-head vs. 6-head architecture-vs-optimizer grid. Each launcher takes the optimizer as an argument, e.g.:
+
+```bash
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash scripts/train/run_width_sweep_160m.sh muon
+```
+
+The full set of launchers (single runs, the 350M and Dion sweeps, matched-loss, and architecture-vs-optimizer grids) lives in [`scripts/train/`](scripts/train/). Logs and eigen metrics are written under `outputs/` (git-ignored). The 160M sweeps run on 4 GPUs and the 350M sweep on 8; the figures reproduce CPU-only in seconds.
+
+## Data and token-frequency buckets
+
+The raw FineWeb10B shards are not committed. To download the pretokenized cache and recompute the released frequency table:
+
+```bash
+bash scripts/preprocess/prepare_fineweb10b_token_buckets.sh
+# smoke test on two shards:
+NUM_TRAIN_SHARDS=2 bash scripts/preprocess/prepare_fineweb10b_token_buckets.sh
+```
+
+You don't need the raw shards to assign HEAD/MID/TAIL buckets — the released `results/processed/token_frequencies.npy` is sufficient on its own:
+
+```text
+results/processed/token_frequencies.npy
+results/processed/token_frequency_stats.json
+```
 
 ## Reproducibility notes
 
-Released configs now include `seed: 1337` and an explicit `spectral_error_policy`.
-The submitted paper used one run per configuration rather than multi-seed sweeps;
-future reproductions can vary the seed field when compute permits. See
-`docs/reproducibility.md` for details.
+Released configs include `seed: 1337` and an explicit `spectral_error_policy`. The paper used one run per configuration rather than multi-seed sweeps; reported scaling exponents include confidence intervals from the log–log fits, and the seed field can be varied for multi-seed reproductions when compute permits. See [`docs/reproducibility.md`](docs/reproducibility.md).
 
-## Standalone diagnostics
+## Acknowledgments
 
-The metrics can be used outside this GPT training stack:
-
-```python
-from optimizer_ssl.probe import spectral_rank
-metrics = spectral_rank(activations)
-```
-
-See `docs/diagnostic_api.md` and `examples/`.
-
-## Attribution
-
-This repository builds on the Dion optimizer codebase. Vendored optimizer code is kept under `third_party/dion/` with its upstream README and notices.
+The GPT training stack and data loader derive from [modded-nanoGPT](https://github.com/KellerJordan/modded-nanogpt); the Muon, NorMuon, and [Dion](https://github.com/microsoft/dion/) optimizers are vendored under [`third_party/dion/`](third_party/dion/) with their upstream READMEs and notices preserved. These optimizers are prior work used as-is, not contributions of this repository. See [`NOTICE.md`](NOTICE.md).
 
 ## Citation
 
-See `CITATION.cff`. The preferred citation is the arXiv paper:
+If you use this code or its findings, please cite this paper:
 
 ```bibtex
-@misc{jha2026samearchitecturedifferentcapacity,
-  title         = {Same Architecture, Different Capacity: Optimizer-Induced Spectral Scaling Laws},
-  author        = {Nandan Kumar Jha and Brandon Reagen},
-  year          = {2026},
-  eprint        = {2605.21803},
-  archivePrefix = {arXiv},
-  primaryClass  = {cs.LG},
-  url           = {https://arxiv.org/abs/2605.21803}
+@article{jha2026optimizer,
+  title   = {Same Architecture, Different Capacity: Optimizer-Induced Spectral Scaling Laws},
+  author  = {Nandan Kumar Jha and Brandon Reagen},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2605.21803}
+}
+```
+
+The spectral scaling-laws framework was introduced in our earlier work (EMNLP 2025), which you may also wish to cite:
+
+```bibtex
+@inproceedings{jha2025spectral,
+  title     = {Spectral Scaling Laws in Language Models: How Effectively Do Feed-Forward Networks Use Their Latent Space?},
+  author    = {Jha, Nandan Kumar and Reagen, Brandon},
+  booktitle = {Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year      = {2025}
 }
 ```

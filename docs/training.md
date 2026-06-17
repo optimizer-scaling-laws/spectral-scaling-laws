@@ -108,7 +108,7 @@ frequency_bucket_reduction: rank0_local
 token_freq_file: results/processed/token_frequencies.npy
 ```
 
-`rank0_local` preserves the submitted-paper instrumentation path: pooled spectra are globally reduced across ranks, while bucketed spectra are measured from the rank-0 local shard at each logging step.
+`rank0_local` preserves the paper's instrumentation path: pooled spectra are globally reduced across ranks, while bucketed spectra are measured from the rank-0 local shard at each logging step.
 
 For new experiments, users can switch to:
 

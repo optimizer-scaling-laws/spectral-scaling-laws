@@ -42,21 +42,10 @@ processed/analysis_summary.json
 
 ## Included figures
 
-```text
-figures/global_hard_rank_scaling.pdf
-figures/global_soft_rank_scaling.pdf
-figures/frequency_bucket_rank_grid.pdf
-figures/dion_tail_hard_rank_sweep.pdf
-figures/dion_tail_soft_rank_sweep.pdf
-figures/matched_loss_scaling_breakdown.pdf
-figures/matched_loss_beta_dynamics.pdf
-figures/matched_loss_pr_trajectories_by_width.pdf
-figures/tail_350m_hard_rank_scaling.pdf
-figures/tail_350m_soft_rank_scaling.pdf
-figures/architecture_vs_optimizer.pdf
-```
-
-Only publication-quality PDF figures are tracked in this repository.
+Eleven publication-quality PDF figures live under `figures/`. The per-figure
+provenance — processed inputs, reproduction command, and raw-log status — is
+recorded in `figure_manifest.csv` (the source of truth); see also
+`results/figures/README.md`. Only PDF figures are tracked; PNG previews are omitted.
 
 ## Reproduction status
 
@@ -68,8 +57,8 @@ bash scripts/reproduce/reproduce_main_results_from_processed.sh \
   results/figures
 ```
 
-The main 160M global and HEAD/MID/TAIL processed CSVs can be rebuilt from raw logs if external raw logs are supplied. Dion rank-sweep, matched-loss, GPT2-350M TAIL, and architecture-vs-optimizer all have full launch-config grid coverage, but their submitted raw logs remain external unless supplied separately.
+The main 160M global and HEAD/MID/TAIL processed CSVs can be rebuilt from raw logs if external raw logs are supplied. Dion rank-sweep, matched-loss, GPT2-350M TAIL, and architecture-vs-optimizer all have full launch-config grid coverage, but their the paper's raw logs remain external unless supplied separately.
 
 ## Large artifacts not included
 
-`layer_metrics.csv`, `matched_loss_layer_metrics.csv`, `tail_350m_layer_metrics.csv`, full submitted-run raw logs, and checkpoints are not committed because they are large and can be regenerated or distributed as external artifacts. Use `results/external_artifacts.md` to record external raw-log locations, sizes, and checksums.
+`layer_metrics.csv`, `matched_loss_layer_metrics.csv`, `tail_350m_layer_metrics.csv`, the paper's full raw logs, and checkpoints are not committed because they are large and can be regenerated or distributed as external artifacts. Use `results/external_artifacts.md` to record external raw-log locations, sizes, and checksums.

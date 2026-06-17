@@ -78,7 +78,11 @@ def test_figure_manifest_is_complete_and_pdf_only():
 
 def test_no_png_figures_or_empty_placeholder_assets():
     assert not list(Path("results/figures").glob("*.png"))
-    assert not Path("assets").exists()
+    assets = Path("assets")
+    if assets.exists():
+        # assets/ is allowed only for the README teaser image, never as an empty placeholder.
+        assert (assets / "teaser.png").exists()
+        assert any(assets.iterdir())
 
 
 def test_headline_notebook_is_polished_and_executed():

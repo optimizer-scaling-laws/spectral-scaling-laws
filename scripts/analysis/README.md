@@ -48,7 +48,7 @@ scripts/analysis/parse_eigen_logs_to_csv.py
 scripts/analysis/aggregate_rank_scaling.py
 ```
 
-The parser supports submitted-run legacy logs (`SE_post`, `PR_post`) and the released log vocabulary (`soft_rank`, `hard_rank`, `spectral_entropy`). This raw-log path is the maintained in-repo path for the main 160M global and HEAD/MID/TAIL rank-scaling analyses. Special figure families are reproduced from committed processed CSVs unless their external raw logs are supplied.
+The parser supports the paper's legacy logs (`SE_post`, `PR_post`) and the released log vocabulary (`soft_rank`, `hard_rank`, `spectral_entropy`). This raw-log path is the maintained in-repo path for the main 160M global and HEAD/MID/TAIL rank-scaling analyses. Special figure families are reproduced from committed processed CSVs unless their external raw logs are supplied.
 
 ## Dion rank-sweep figures
 

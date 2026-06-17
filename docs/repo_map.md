@@ -1,11 +1,13 @@
 # Repository map
 
+This is the per-file companion to the high-level tree in the [README](../README.md): it documents what each directory and key module contains.
+
 ## Top level
 
 - `train.py`: compatibility entrypoint for `torchrun train.py --config ...` style launches.
 - `pyproject.toml`, `requirements.txt`, `environment.yml`: installation metadata.
 - `Makefile`: convenience targets for tests, formatting, data preparation, and example launches.
-- `LICENSE`, `NOTICE.md`, `CITATION.cff`: licensing, attribution, and citation metadata.
+- `LICENSE`, `NOTICE.md`: license and third-party attribution.
 
 ## `configs/`
 
@@ -75,9 +77,9 @@ CPU-safe tests designed to run quickly in CI.
 
 Colab-ready, executed notebooks for lightweight public reproduction. The current notebook, `notebooks/reproduce_main_figures.ipynb`, regenerates the headline 160M global and frequency-bucket scaling views from committed processed CSVs only. It does not train models, load checkpoints, or require a GPU.
 
-## Removed placeholder folders
+## `assets/`
 
-The empty `assets/` placeholder remains removed. Add it only if it contains polished reusable artifacts.
+Polished static assets used by the README and project-facing documentation. The current asset is `assets/teaser.png`, the README teaser figure. Avoid adding exploratory plots or generated scratch images here.
 
 ## `optimizer_ssl/train/` module layout
 
@@ -95,4 +97,4 @@ The public launch surface is unchanged: use `torchrun ... train.py --config ...`
 
 ## Citation and project links
 
-See `docs/citation.md` and `CITATION.cff` for the paper, project website, repository URL, and citation metadata.
+See `docs/citation.md` for the paper, project website, repository URL, and BibTeX.

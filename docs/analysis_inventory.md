@@ -13,7 +13,7 @@ This document tracks how raw telemetry logs, processed CSVs, and public figure s
 | GPT2-350M TAIL scaling | `scripts/reproduce/reproduce_350m_tail.sh` | full launch configs + processed CSV | `tail_350m_rank_scaling_points.csv`, `tail_350m_beta_table.csv` | `tail_350m_hard_rank_scaling.pdf`, `tail_350m_soft_rank_scaling.pdf` | Integrated |
 | Architecture vs optimizer comparison | `scripts/reproduce/reproduce_architecture_vs_optimizer.sh` | full launch configs + processed beta values | `architecture_vs_optimizer_beta_values.csv`, `architecture_vs_optimizer_comparison.csv` | `architecture_vs_optimizer.pdf` | Integrated |
 
-The submitted/legacy scripts that originally produced these figures had names such as `rank_plots_global.py`, `rank_plots_multi.py`, `tail_rank_plots_multi.py`, `beta_dynamics_plot.py`, `pr_trajectories_by_width.py`, `tail_rank_plots_350m.py`, and `plot_optimizer_vs_architecture.py`. The public repo entrypoints above replace those scripts and read normalized CSVs from `results/processed/`.
+The legacy scripts that originally produced these figures had names such as `rank_plots_global.py`, `rank_plots_multi.py`, `tail_rank_plots_multi.py`, `beta_dynamics_plot.py`, `pr_trajectories_by_width.py`, `tail_rank_plots_350m.py`, and `plot_optimizer_vs_architecture.py`. The public repo entrypoints above replace those scripts and read normalized CSVs from `results/processed/`.
 
 The legacy plotting scripts parsed `SE_post` and `PR_post`; the cleaned analysis pipeline normalizes these to `spectral_entropy`, `soft_rank`, and `hard_rank` before aggregation.
 
@@ -60,20 +60,20 @@ frequency_bucket_beta_table.csv
 
 This path is the public raw-log-to-processed path for the main 160M global and HEAD/MID/TAIL rank-scaling figures, assuming external raw logs are supplied.
 
-## Submitted-run compatibility choices
+## Compatibility with the paper's runs
 
-- Submitted logs used legacy metric names: `SE_*`, `PR_*`, `EEE_*`, and `JS`.
+- The paper's logs used legacy metric names: `SE_*`, `PR_*`, `EEE_*`, and `JS`.
 - `SE_post` is raw spectral entropy; the public analysis converts it to `soft_rank = exp(SE_post)`.
 - `PR_post` maps to `hard_rank`.
 - `EEE` and `JS` are ignored because they are not part of the Optimizer-SSL public metric vocabulary.
-- Frequency-bucket runs from the submitted version should be labeled `frequency_bucket_reduction=rank0_local` in the manifest.
-- Historical submitted logs did not record explicit seeds; use `seed=not_recorded` rather than inventing one.
+- Frequency-bucket runs from the paper should be labeled `frequency_bucket_reduction=rank0_local` in the manifest.
+- The paper's original logs did not record explicit seeds; use `seed=not_recorded` rather than inventing one.
 
 ## Processed-CSV-only / external-log result families
 
-All committed PDF figures are reproduced from committed processed CSVs. Rebuilding processed CSVs for special figure families from submitted raw logs requires external raw-log bundles, even though their full launch-config grids are now committed.
+All committed PDF figures are reproduced from committed processed CSVs. Rebuilding processed CSVs for special figure families from the paper's raw logs requires external raw-log bundles, even though their full launch-config grids are now committed.
 
-Special families with full launch-config coverage but external submitted logs:
+Special families with full launch-config coverage but external raw logs:
 
 - Dion TAIL rank sweep.
 - Matched-loss / extended-AdamW breakdown.

@@ -4,7 +4,7 @@ The repository separates raw logs, large intermediate tables, compact processed 
 
 ## Raw logs
 
-Raw eigen telemetry logs are text files produced during training. Submitted-run legacy logs use names such as `SE_post` and `PR_post`; released-code logs use the cleaner `spectral_entropy`, `soft_rank`, and `hard_rank` vocabulary in normalized CSVs. Raw logs are parsed through `optimizer_ssl.analysis.log_schema` before analysis.
+Raw eigen telemetry logs are text files produced during training. The paper's legacy logs use names such as `SE_post` and `PR_post`; released-code logs use the cleaner `spectral_entropy`, `soft_rank`, and `hard_rank` vocabulary in normalized CSVs. Raw logs are parsed through `optimizer_ssl.analysis.log_schema` before analysis.
 
 Full raw logs can be large and should normally be distributed as external artifacts. The repository includes only small examples under `results/sample_logs/`.
 
@@ -21,7 +21,7 @@ optimizer_variant, dion_rank_fraction, num_gpus, seed,
 frequency_bucket_reduction, log_dir
 ```
 
-For submitted historical logs whose seed was not recorded, use `seed=not_recorded`. For frequency-bucket logs from the submitted paper, use `frequency_bucket_reduction=rank0_local`.
+For the paper's original logs whose seed was not recorded, use `seed=not_recorded`. For frequency-bucket logs from the paper, use `frequency_bucket_reduction=rank0_local`.
 
 In the public processed artifact, `log_dir` uses an `external://...` placeholder rather than a local machine path.
 
@@ -42,7 +42,7 @@ source_log_schema, source_path,
 
 ## Scaling points
 
-`global_rank_scaling_points.csv` and `frequency_bucket_rank_scaling_points.csv` contain one row per run/bucket/metric after the submitted-plot aggregation rule:
+`global_rank_scaling_points.csv` and `frequency_bucket_rank_scaling_points.csv` contain one row per run/bucket/metric after the paper's aggregation rule:
 
 1. take the final five checkpoints per layer;
 2. take the median over those checkpoints for each layer;
@@ -78,7 +78,7 @@ Use this manifest to audit whether a result is:
 
 - reproducible directly from committed processed CSVs,
 - rebuildable from raw logs using the main parser path,
-- or released with committed processed data and full launch configs while submitted raw logs remain external.
+- or released with committed processed data and full launch configs while the paper's raw logs remain external.
 
 ## Figures
 

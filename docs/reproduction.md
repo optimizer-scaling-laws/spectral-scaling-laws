@@ -151,7 +151,7 @@ Only PDF figures are tracked.
 
 ## Tier 4: rebuild main processed CSVs from raw logs
 
-Full submitted-run raw logs are external artifacts. After downloading them, create a manifest from `results/processed/run_metadata_template.csv` and run:
+The paper's full raw logs are external artifacts. After downloading them, create a manifest from `results/processed/run_metadata_template.csv` and run:
 
 ```bash
 bash scripts/reproduce/reproduce_main_results_from_logs.sh \
@@ -161,7 +161,7 @@ bash scripts/reproduce/reproduce_main_results_from_logs.sh \
 
 This parses raw legacy or released eigen logs into `layer_metrics.csv`, then rebuilds the main global and HEAD/MID/TAIL scaling-point CSVs and beta tables.
 
-This raw-log wrapper covers the main parser/aggregation path. All committed figure families have full launch-config grid coverage, but submitted raw logs for the special figure families remain external. Their committed processed inputs are:
+This raw-log wrapper covers the main parser/aggregation path. All committed figure families have full launch-config grid coverage, but the paper's raw logs for the special figure families remain external. Their committed processed inputs are:
 
 - Dion rank sweep: configs under `configs/paper_runs/dion_rank_sweep/160m/`; processed inputs `dion_tail_rank_sweep_points.csv`, `dion_tail_rank_sweep_beta_table.csv`.
 - Matched-loss / extended AdamW: configs under `configs/paper_runs/matched_loss/160m/`; processed inputs `matched_loss_beta_dynamics.csv`, `matched_loss_pr_trajectories.csv`, and `matched_loss_terminal_beta_table.csv`.
