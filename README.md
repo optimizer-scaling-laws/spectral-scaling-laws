@@ -7,7 +7,7 @@
 Official code for paper **[Same Architecture, Different Capacity: Optimizer-Induced Spectral Scaling Laws](https://arxiv.org/abs/2605.21803)**.
 
 <div align="center">
-  <a href="https://arxiv.org/abs/2605.21803"><img src="https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png" height="16" width="16" style="vertical-align:middle"> <b>Paper</b></a> &nbsp;|&nbsp;
+  <a href="https://arxiv.org/abs/2605.21803"><img src="https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png" height="16" width="16" style="vertical-align:middle"> <b>arXiv</b></a> &nbsp;|&nbsp;
   <a href="https://optimizer-scaling-laws.github.io/">🌐 <b>Project Page</b></a> &nbsp;|&nbsp;
   <a href="https://colab.research.google.com/github/optimizer-scaling-laws/spectral-scaling-laws/blob/main/notebooks/reproduce_main_figures.ipynb"><img src="https://colab.research.google.com/img/colab_favicon_256px.png" height="16" width="16" style="vertical-align:middle"> <b>Reproduce in Colab</b></a>
 </div>
