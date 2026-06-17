@@ -68,7 +68,7 @@ optimizer_ssl/            training stack, spectral telemetry, scaling fits, and 
   ├── spectra/            covariance spectra, soft/hard rank, frequency-bucketed (HEAD/MID/TAIL) metrics
   ├── analysis/           log parsing, rank aggregation, power-law fits with confidence intervals
   └── probe.py            model-agnostic spectral-rank diagnostic
-configs/                  full launch-config grids for every paper experiment (+ reusable components)
+configs/                  full launch-config grids
 scripts/
   ├── train/              single-run and sweep launchers
   ├── analysis/           raw-log → normalized CSV → rank-scaling beta tables
@@ -110,7 +110,7 @@ Released configs cover every experiment family. Per-optimizer hyperparameters ar
 
 | Family | Scale | Optimizers | Widths | GPUs | Launch |
 |---|:--:|---|:--:|:--:|---|
-| Main width sweep | 160M | AdamW · Muon · NorMuon · Dion(1/2) · Dion(1/16) | 1×–8× | 4 | `run_width_sweep_160m.sh [opt]` |
+| Main width sweep | 160M | AdamW · Muon · NorMuon · Dion(1/2, 1/16) | 1×–8× | 4 | `run_width_sweep_160m.sh [opt]` |
 | Main width sweep | 350M | AdamW · Muon · NorMuon · Dion(1/16) | 1×–4× | 8 | `run_width_sweep_350m.sh [opt]` |
 | Dion rank sweep | 160M | AdamW · Dion(1/2, 1/4, 1/8, 1/16) | 1×–8× | 4 | `run_dion_rank_sweep_160m.sh` |
 | Matched-loss | 160M | AdamW(6K · 12K) · Dion(1/16) | 1×–8× | 4 | `run_matched_loss_160m.sh` |
@@ -126,7 +126,7 @@ Logs and eigen metrics are written under `outputs/` (git-ignored); the figures t
 
 ## Data and token-frequency buckets
 
-The raw FineWeb10B shards are not committed. To download the pretokenized cache and recompute the released frequency table:
+To download the pretokenized cache and recompute the released frequency table:
 
 ```bash
 bash scripts/preprocess/prepare_fineweb10b_token_buckets.sh
@@ -134,7 +134,7 @@ bash scripts/preprocess/prepare_fineweb10b_token_buckets.sh
 NUM_TRAIN_SHARDS=2 bash scripts/preprocess/prepare_fineweb10b_token_buckets.sh
 ```
 
-You don't need the raw shards to assign HEAD/MID/TAIL buckets — the released `results/processed/token_frequencies.npy` is sufficient on its own:
+Raw shards are not needed to assign HEAD/MID/TAIL buckets, the released `results/processed/token_frequencies.npy` can be used:
 
 ```text
 results/processed/token_frequencies.npy
@@ -143,11 +143,11 @@ results/processed/token_frequency_stats.json
 
 ## Reproducibility notes
 
-Released configs include `seed: 1337` and an explicit `spectral_error_policy`. The paper used one run per configuration rather than multi-seed sweeps; reported scaling exponents include confidence intervals from the log–log fits, and the seed field can be varied for multi-seed reproductions when compute permits. See [`docs/reproduction.md`](docs/reproduction.md).
+Released configs include `seed: 1337` and an explicit `spectral_error_policy`. In the paper, reported scaling exponents include confidence intervals from the log–log fits. See [`docs/reproduction.md`](docs/reproduction.md).
 
 ## Acknowledgments
 
-The GPT training stack and data loader derive from [modded-nanoGPT](https://github.com/KellerJordan/modded-nanogpt); the Muon, NorMuon, and [Dion](https://github.com/microsoft/dion/) optimizers are vendored under [`third_party/dion/`](third_party/dion/) with their upstream READMEs and notices preserved. These optimizers are prior work used as-is, not contributions of this repository. See [`NOTICE.md`](NOTICE.md).
+The GPT training stack and data loader are used from [modded-nanoGPT](https://github.com/KellerJordan/modded-nanogpt), and the Muon, NorMuon, and [Dion](https://github.com/microsoft/dion/) optimizers are used from [`third_party/dion/`](third_party/dion/). These optimizers are prior work used as-is, not contributions of this repository. See [`NOTICE.md`](NOTICE.md).
 
 ## Citation
 
@@ -156,7 +156,7 @@ If you find this code or insights useful, please consider citing this paper:
 ```bibtex
 @article{jha2026optimizer,
   title   = {Same Architecture, Different Capacity: Optimizer-Induced Spectral Scaling Laws},
-  author  = {Nandan Kumar Jha and Brandon Reagen},
+  author    = {Jha, Nandan Kumar and Reagen, Brandon},
   year    = {2026},
   url     = {https://arxiv.org/abs/2605.21803}
 }
