@@ -43,7 +43,7 @@ make figures      # writes all figures to results/figures/
 | Extra | Command | For |
 |---|---|---|
 | `metrics` | `pip install -e ".[metrics]"` | CPU diagnostics (NumPy + PyTorch) |
-| `analysis` | `pip install -e ".[analysis]"` | figure scripts and the Colab notebook path |
+| `analysis` | `pip install -e ".[analysis]"` | figure scripts and Colab notebook |
 | `train` | `pip install -e ".[train]"` | training configurations |
 | `dev` | `pip install -e ".[dev]"` | tests |
 | `metrics,analysis` | `pip install -e ".[metrics,analysis]"` | figure reproduction without training runs|
