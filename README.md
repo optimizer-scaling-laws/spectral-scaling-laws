@@ -38,7 +38,7 @@ make figures      # writes all figures to results/figures/
 
 ## Installation
 
-`pyproject.toml` is the single source of truth for dependencies — install only the extras you need:
+`pyproject.toml` contents all the dependencies needed for all the trianing runs and analyzing the spectral metrics:
 
 | Extra | Command | For |
 |---|---|---|
@@ -50,7 +50,7 @@ make figures      # writes all figures to results/figures/
 
 ## Run the diagnostic on your own model
 
-The spectral-rank metrics are not tied to this training stack — point them at any model's FFN activations to measure the spectral capacity *your* optimizer is realizing:
+The spectral-rank metrics can be reused across other training stack:
 
 ```python
 from optimizer_ssl.probe import spectral_rank
@@ -84,9 +84,9 @@ docs/                     data, metrics, reproduction, training, compute, and op
 tests/                    CPU-safe sanity tests (metrics, fits, parsing, configs, artifacts)
 ```
 
-## Reproduce the figures
+## Reproduce the plots
 
-All figure families ship with their processed CSVs, so every committed PDF regenerates without training:
+All figures are accompanied with their logs in CSVs, so they can be re-generated without training:
 
 ```bash
 make figures
@@ -94,7 +94,7 @@ make figures
 bash scripts/reproduce/reproduce_main_results_from_processed.sh results/processed results/figures
 ```
 
-To rebuild the 160M processed CSVs from external raw logs, fill in a run manifest based on `results/processed/run_metadata_template.csv`, then:
+To generate the 160M processed CSVs from external raw logs, get the data in `results/processed/run_metadata_template.csv`, then:
 
 ```bash
 bash scripts/reproduce/reproduce_main_results_from_logs.sh \
