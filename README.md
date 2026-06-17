@@ -16,7 +16,7 @@ Official code for paper **[Same Architecture, Different Capacity: Optimizer-Indu
 
 <p align="center">
   <img src="assets/teaser.png" width="900" alt="Spectral scaling exponents depend on optimizer choice (soft and hard spectral rank vs FFN width)"><br>
-  <em><strong>Figure 1.</strong> Spectral scaling exponents depend on optimizer choice: soft (left) and hard (right) spectral rank as a function of FFN width in GPT-2 160M. AdamW exhibits the largest hard–soft asymmetry (Δ = β<sub>soft</sub> − β<sub>hard</sub> = 0.37), indicating concentrated eigenspectra. Muon and Dion (1/2) reduce this asymmetry to Δ ≈ 0.14. Moreover, hard-rank scaling exhibits stronger dependence on optimizer choice.</em>
+  <em><strong>Figure 1.</strong> Spectral scaling exponents depend on optimizer choice: soft (left) and hard (right) spectral rank as a function of FFN width in GPT-2 160M. AdamW exhibits the largest hard–soft asymmetry (Δ = β<sub>soft</sub> − β<sub>hard</sub> = 0.37), indicating concentrated eigenspectra. Muon and Dion (1/2) reduce this asymmetry to Δ ≈ 0.14. Moreover, hard-rank scaling exhibits stronger dependence on optimizer choice, compared to soft-rank scaling.</em>
 </p>
 
 ## TL;DR
