@@ -25,7 +25,7 @@ Realized representation capacity is not architecture-only, rather it emerges fro
 
 ## Reproduce main results
 
-The Colab notebook re-fits the scaling exponents and produce the main figures directly from the raw logs generated at pre-trianing:
+The Colab notebook re-fits the scaling exponents and produce the main figures directly from the raw logs generated at training:
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/optimizer-scaling-laws/spectral-scaling-laws/blob/main/notebooks/reproduce_main_figures.ipynb)
 
@@ -38,7 +38,7 @@ make figures      # writes all figures to results/figures/
 
 ## Installation
 
-`pyproject.toml` contents all the dependencies needed for all the trianing runs and analyzing the spectral metrics:
+`pyproject.toml` contains all the dependencies needed for all the trianing runs and analyzing the spectral metrics:
 
 | Extra | Command | For |
 |---|---|---|
